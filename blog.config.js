@@ -55,7 +55,7 @@ const BLOG = {
   // 无衬线字体 例如'"LXGW WenKai"'
   FONT_SANS: [
     // '"LXGW WenKai"',
-    '"Inter+Tight"',
+    '"InterTight"',
     '"PingFang SC"',
     '-apple-system',
     'BlinkMacSystemFont',
