@@ -55,3 +55,5 @@ const MyApp = ({ Component, pageProps }) => {
 }
 
 export default MyApp
+// const newLocal = 'edge'
+// export const runtime = newLocal // 'nodejs' (default) | 'edge'
