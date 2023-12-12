@@ -154,4 +154,4 @@ export const loadThemeFromCookies = () => {
 export const saveThemeToCookies = (newTheme) => {
   cookie.save('theme', newTheme, { path: '/' })
 }
-export const runtime = 'edge'
+export const runtime = 'experimental-edge'

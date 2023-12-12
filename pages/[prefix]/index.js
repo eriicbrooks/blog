@@ -189,5 +189,5 @@ export function getRecommendPost(post, allPosts, count = 6) {
   }
   return recommendPosts
 }
-// export const config = { runtime: 'edge' };
+// export const config = { runtime: 'experimental-edge' };
 export default Slug

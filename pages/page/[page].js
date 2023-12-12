@@ -70,4 +70,4 @@ export async function getStaticProps({ params: { page } }) {
 }
 
 export default Page
-export const runtime = 'edge'
+export const runtime = 'experimental-edge'
