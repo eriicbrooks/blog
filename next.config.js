@@ -97,7 +97,7 @@ module.exports = withBundleAnalyzer({
   },
   experimental: {
     scrollRestoration: false,
-    // runtime: 'edge'
+    runtime: 'experimental-edge'
     
   },
   exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {

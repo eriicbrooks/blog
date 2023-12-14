@@ -71,8 +71,8 @@ export async function getStaticProps() {
   }
 }
 
-export default Index
+// export const config = {
+//   runtime: 'experimental-edge'
+// }
 
-export const config = {
-  runtime: 'experimental-edge'
-}
+export default Index
