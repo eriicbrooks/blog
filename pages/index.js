@@ -76,7 +76,6 @@ export default Index
 export const config = newFunction();
 function newFunction() {
   return {
-    runtime: 'experimental-edge',
+    runtime: 'experimental-edge'
   }
 }
-
