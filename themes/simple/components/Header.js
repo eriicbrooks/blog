@@ -16,9 +16,9 @@ export const Header = (props) => {
         <header className="text-center justify-between items-center px-6 bg-white h-80 dark:bg-black relative z-10">
             <div className="float-none inline-block py-12">
                 <Link href='/'>
-                    {/* 可使用一张单图作为logo */}
+             //       {/* 可使用一张单图作为logo */}
                     <div className='flex space-x-6'>
-                        /* <div className='hover:rotate-45 hover:scale-125 transform duration-200 cursor-pointer'> */
+                   //     /* <div className='hover:rotate-45 hover:scale-125 transform duration-200 cursor-pointer'> */
                             <LazyImage src={avatar} className='rounded-full' width={130} height={130} alt={siteConfig('AUTHOR')} />
                         </div>
 
