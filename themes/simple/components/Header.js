@@ -16,8 +16,10 @@ export const Header = (props) => {
         <header className="text-center justify-between items-center px-6 bg-white h-80 dark:bg-black relative z-10">
             <div className="float-none inline-block py-12">
                 <Link href='/'>
+                    {}
                     <div className='flex space-x-6'>
-                            <LazyImage src={avatar} className='rounded-full' width={100} height={100} alt={siteConfig('AUTHOR')} />
+                         <div className='hover:rotate-0 hover:scale-100 transform duration-200 cursor-pointer'>
+                            <LazyImage src={avatar} className='rounded-full' width={130} height={130} alt={siteConfig('AUTHOR')} />
                         </div>
 
                         <div className='flex-col flex justify-center'>
