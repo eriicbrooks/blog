@@ -98,7 +98,7 @@ module.exports = withBundleAnalyzer({
   experimental: {
     scrollRestoration: false,
     runtime: 'experimental-edge'
-    
+
   },
   exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
     // 导出时 忽略/pages/sitemap.xml.js ， 否则报错getServerSideProps
