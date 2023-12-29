@@ -3,7 +3,7 @@ const BLOG = {
         process.env.NOTION_PAGE_ID || '4574642305a949c38a8195c5eca6a666',
   PSEUDO_STATIC: process.env.NEXT_PUBLIC_PSEUDO_STATIC || false, // ä¼ªéæè·¯å¾ï¼å¼å¯åæææç« URLé½ä»¥ .html ç»å°¾ã
   NEXT_REVALIDATE_SECOND: process.env.NEXT_PUBLIC_REVALIDATE_SECOND || 5, // æ´æ°åå®¹ç¼å­é´é åä½(ç§)ï¼å³æ¯ä¸ªé¡µé¢æ5ç§ççº¯éææãæ­¤æé´æ è®ºå¤å°æ¬¡è®¿é®é½ä¸ä¼æånotionæ°æ®ï¼è°å¤§è¯¥å¼æå©äºèçVercelèµæºãåæ¶æåè®¿é®éçï¼ä½ä¹ä¼ä½¿æç« æ´æ°æå»¶è¿ã
-  THEME: process.env.NEXT_PUBLIC_THEME || 'nobelium', // å½åä¸»é¢ï¼å¨themesæä»¶å¤¹ä¸å¯æ¾å°æææ¯æçä¸»é¢ï¼ä¸»é¢åç§°å°±æ¯æä»¶å¤¹åï¼ä¾å¦ example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
+  THEME: process.env.NEXT_PUBLIC_THEME || 'simple', // å½åä¸»é¢ï¼å¨themesæä»¶å¤¹ä¸å¯æ¾å°æææ¯æçä¸»é¢ï¼ä¸»é¢åç§°å°±æ¯æä»¶å¤¹åï¼ä¾å¦ example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
   THEME_SWITCH: process.env.NEXT_PUBLIC_THEME_SWITCH || false, // æ¯å¦æ¾ç¤ºåæ¢ä¸»é¢æé®
   LANG: process.env.NEXT_PUBLIC_LANG || 'en-US', // e.g 'zh-CN','en-US'  see /lib/lang.js for more.
   SINCE: process.env.NEXT_SINCE || 2023, // e.g if leave this empty, current year will be used.
@@ -15,9 +15,9 @@ const BLOG = {
 
   CUSTOM_MENU: process.env.NEXT_PUBLIC_CUSTOM_MENU || false, // æ¯æMenu ç±»åï¼ä»3.12.0çæ¬èµ·ï¼åä¸»é¢å°éæ­¥æ¯æçµæ´»çäºçº§èåéç½®ï¼æ¿ä»£äºåæ¥çPageç±»åï¼æ­¤éç½®æ¯è¯éªåè½ãé»è®¤å³é­ã
 
-  AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || 'eriicbrooks', // æ¨çæµç§° ä¾å¦ tangly1024
+  AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || 'eric b.', // æ¨çæµç§° ä¾å¦ tangly1024
   BIO: process.env.NEXT_PUBLIC_BIO || '""', // ä½èç®ä»
-  LINK: process.env.NEXT_PUBLIC_LINK || 'https://github.com/eriicbrooks/blog', // ç½ç«å°å
+  LINK: process.env.NEXT_PUBLIC_LINK || 'https://ericbrooks.io', // ç½ç«å°å
   KEYWORDS: process.env.NEXT_PUBLIC_KEYWORD || 'Notion, Blog', // ç½ç«å³é®è¯ è±æéå·éå¼
 
   // ç¤¾äº¤é¾æ¥ï¼ä¸éè¦å¯çç©ºç½ï¼ä¾å¦ CONTACT_WEIBO:''
