@@ -1,58 +1,56 @@
-// 注: process.env.XX是Vercel的环境变量，配置方式见：https://docs.tangly1024.com/article/how-to-config-notion-next#c4768010ae7d44609b744e79e2f9959a
 const BLOG = {
-  // Important page_id！！！Duplicate Template from  https://www.notion.so/tanghh/02ab3b8678004aa69e9e415905ef32a5
   NOTION_PAGE_ID:
         process.env.NOTION_PAGE_ID || '4574642305a949c38a8195c5eca6a666',
-  PSEUDO_STATIC: process.env.NEXT_PUBLIC_PSEUDO_STATIC || false, // 伪静态路径，开启后所有文章URL都以 .html 结尾。
-  NEXT_REVALIDATE_SECOND: process.env.NEXT_PUBLIC_REVALIDATE_SECOND || 5, // 更新内容缓存间隔 单位(秒)；即每个页面有5秒的纯静态期、此期间无论多少次访问都不会抓取notion数据；调大该值有助于节省Vercel资源、同时提升访问速率，但也会使文章更新有延迟。
-  THEME: process.env.NEXT_PUBLIC_THEME || 'nobelium', // 当前主题，在themes文件夹下可找到所有支持的主题；主题名称就是文件夹名，例如 example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
-  THEME_SWITCH: process.env.NEXT_PUBLIC_THEME_SWITCH || false, // 是否显示切换主题按钮
+  PSEUDO_STATIC: process.env.NEXT_PUBLIC_PSEUDO_STATIC || false, // ä¼ªéæè·¯å¾ï¼å¼å¯åæææç« URLé½ä»¥ .html ç»å°¾ã
+  NEXT_REVALIDATE_SECOND: process.env.NEXT_PUBLIC_REVALIDATE_SECOND || 5, // æ´æ°åå®¹ç¼å­é´é åä½(ç§)ï¼å³æ¯ä¸ªé¡µé¢æ5ç§ççº¯éææãæ­¤æé´æ è®ºå¤å°æ¬¡è®¿é®é½ä¸ä¼æånotionæ°æ®ï¼è°å¤§è¯¥å¼æå©äºèçVercelèµæºãåæ¶æåè®¿é®éçï¼ä½ä¹ä¼ä½¿æç« æ´æ°æå»¶è¿ã
+  THEME: process.env.NEXT_PUBLIC_THEME || 'matery', // å½åä¸»é¢ï¼å¨themesæä»¶å¤¹ä¸å¯æ¾å°æææ¯æçä¸»é¢ï¼ä¸»é¢åç§°å°±æ¯æä»¶å¤¹åï¼ä¾å¦ example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
+  THEME_SWITCH: process.env.NEXT_PUBLIC_THEME_SWITCH || false, // æ¯å¦æ¾ç¤ºåæ¢ä¸»é¢æé®
   LANG: process.env.NEXT_PUBLIC_LANG || 'en-US', // e.g 'zh-CN','en-US'  see /lib/lang.js for more.
   SINCE: process.env.NEXT_SINCE || 2023, // e.g if leave this empty, current year will be used.
-  APPEARANCE: process.env.NEXT_PUBLIC_APPEARANCE || 'auto', // ['light', 'dark', 'auto'], // light 日间模式 ， dark夜间模式， auto根据时间和主题自动夜间模式
-  APPEARANCE_DARK_TIME: process.env.NEXT_PUBLIC_APPEARANCE_DARK_TIME || [18, 6], // 夜间模式起至时间，false时关闭根据时间自动切换夜间模式
+  APPEARANCE: process.env.NEXT_PUBLIC_APPEARANCE || 'auto', // ['light', 'dark', 'auto'], // light æ¥é´æ¨¡å¼ ï¼ darkå¤é´æ¨¡å¼ï¼ autoæ ¹æ®æ¶é´åä¸»é¢èªå¨å¤é´æ¨¡å¼
+  APPEARANCE_DARK_TIME: process.env.NEXT_PUBLIC_APPEARANCE_DARK_TIME || [18, 6], // å¤é´æ¨¡å¼èµ·è³æ¶é´ï¼falseæ¶å³é­æ ¹æ®æ¶é´èªå¨åæ¢å¤é´æ¨¡å¼
 
-  // 3.14.1版本后，欢迎语在此配置，英文逗号隔开 ,  即可支持多个欢迎语打字效果。一个普通的干饭人🍚
+  // 3.14.1çæ¬åï¼æ¬¢è¿è¯­å¨æ­¤éç½®ï¼è±æéå·éå¼ ,  å³å¯æ¯æå¤ä¸ªæ¬¢è¿è¯­æå­ææãä¸ä¸ªæ®éçå¹²é¥­äººð
   GREETING_WORDS: process.env.NEXT_PUBLIC_GREETING_WORDS || 'hello',
 
-  CUSTOM_MENU: process.env.NEXT_PUBLIC_CUSTOM_MENU || false, // 支持Menu 类型，从3.12.0版本起，各主题将逐步支持灵活的二级菜单配置，替代了原来的Page类型，此配置是试验功能、默认关闭。
+  CUSTOM_MENU: process.env.NEXT_PUBLIC_CUSTOM_MENU || true, // æ¯æMenu ç±»åï¼ä»3.12.0çæ¬èµ·ï¼åä¸»é¢å°éæ­¥æ¯æçµæ´»çäºçº§èåéç½®ï¼æ¿ä»£äºåæ¥çPageç±»åï¼æ­¤éç½®æ¯è¯éªåè½ãé»è®¤å³é­ã
 
-  AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || 'eriicbrooks', // 您的昵称 例如 tangly1024
-  BIO: process.env.NEXT_PUBLIC_BIO || '""', // 作者简介
-  LINK: process.env.NEXT_PUBLIC_LINK || 'https://github.com/eriicbrooks/blog', // 网站地址
-  KEYWORDS: process.env.NEXT_PUBLIC_KEYWORD || 'Notion, Blog', // 网站关键词 英文逗号隔开
+  AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || 'eriicbrooks', // æ¨çæµç§° ä¾å¦ tangly1024
+  BIO: process.env.NEXT_PUBLIC_BIO || '""', // ä½èç®ä»
+  LINK: process.env.NEXT_PUBLIC_LINK || 'https://github.com/eriicbrooks/blog', // ç½ç«å°å
+  KEYWORDS: process.env.NEXT_PUBLIC_KEYWORD || 'Notion, Blog', // ç½ç«å³é®è¯ è±æéå·éå¼
 
-  // 社交链接，不需要可留空白，例如 CONTACT_WEIBO:''
-  CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'ennuigo2@gmail.com', // 邮箱地址 例如mail@tangly1024.com
-  CONTACT_WEIBO: process.env.NEXT_PUBLIC_CONTACT_WEIBO || '', // 你的微博个人主页
-  CONTACT_TWITTER: process.env.NEXT_PUBLIC_CONTACT_TWITTER || '', // 你的twitter个人主页
-  CONTACT_GITHUB: process.env.NEXT_PUBLIC_CONTACT_GITHUB || 'https://github.com/eriicbrooks/blog', // 你的github个人主页 例如 https://github.com/tangly1024
-  CONTACT_TELEGRAM: process.env.NEXT_PUBLIC_CONTACT_TELEGRAM || '', // 你的telegram 地址 例如 https://t.me/tangly_1024
-  CONTACT_LINKEDIN: process.env.NEXT_PUBLIC_CONTACT_LINKEDIN || '', // 你的linkedIn 首页
-  CONTACT_INSTAGRAM: process.env.NEXT_PUBLIC_CONTACT_INSTAGRAM || '', // 您的instagram地址
-  CONTACT_BILIBILI: process.env.NEXT_PUBLIC_CONTACT_BILIBILI || '', // B站主页
-  CONTACT_YOUTUBE: process.env.NEXT_PUBLIC_CONTACT_YOUTUBE || '', // Youtube主页
+  // ç¤¾äº¤é¾æ¥ï¼ä¸éè¦å¯çç©ºç½ï¼ä¾å¦ CONTACT_WEIBO:''
+  CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'ennuigo2@gmail.com', // é®ç®±å°å ä¾å¦mail@tangly1024.com
+  CONTACT_WEIBO: process.env.NEXT_PUBLIC_CONTACT_WEIBO || '', // ä½ çå¾®åä¸ªäººä¸»é¡µ
+  CONTACT_TWITTER: process.env.NEXT_PUBLIC_CONTACT_TWITTER || '', // ä½ çtwitterä¸ªäººä¸»é¡µ
+  CONTACT_GITHUB: process.env.NEXT_PUBLIC_CONTACT_GITHUB || 'https://github.com/eriicbrooks/blog', // ä½ çgithubä¸ªäººä¸»é¡µ ä¾å¦ https://github.com/tangly1024
+  CONTACT_TELEGRAM: process.env.NEXT_PUBLIC_CONTACT_TELEGRAM || '', // ä½ çtelegram å°å ä¾å¦ https://t.me/tangly_1024
+  CONTACT_LINKEDIN: process.env.NEXT_PUBLIC_CONTACT_LINKEDIN || '', // ä½ çlinkedIn é¦é¡µ
+  CONTACT_INSTAGRAM: process.env.NEXT_PUBLIC_CONTACT_INSTAGRAM || '', // æ¨çinstagramå°å
+  CONTACT_BILIBILI: process.env.NEXT_PUBLIC_CONTACT_BILIBILI || '', // Bç«ä¸»é¡µ
+  CONTACT_YOUTUBE: process.env.NEXT_PUBLIC_CONTACT_YOUTUBE || '', // Youtubeä¸»é¡µ
 
-  NOTION_HOST: process.env.NEXT_PUBLIC_NOTION_HOST || 'https://www.notion.so', // Notion域名，您可以选择用自己的域名进行反向代理，如果不懂得什么是反向代理，请勿修改此项
+  NOTION_HOST: process.env.NEXT_PUBLIC_NOTION_HOST || 'https://www.notion.so', // Notionååï¼æ¨å¯ä»¥éæ©ç¨èªå·±çååè¿è¡ååä»£çï¼å¦æä¸æå¾ä»ä¹æ¯ååä»£çï¼è¯·å¿ä¿®æ¹æ­¤é¡¹
 
-  BLOG_FAVICON: process.env.NEXT_PUBLIC_FAVICON || '/favicon.ico', // blog favicon 配置, 默认使用 /public/favicon.ico，支持在线图片，如 https://img.imesong.com/favicon.png
+  BLOG_FAVICON: process.env.NEXT_PUBLIC_FAVICON || '/favicon.ico', // blog favicon éç½®, é»è®¤ä½¿ç¨ /public/favicon.icoï¼æ¯æå¨çº¿å¾çï¼å¦ https://img.imesong.com/favicon.png
 
-  RANDOM_IMAGE_URL: process.env.NEXT_PUBLIC_RANDOM_IMAGE_URL || '', // 随机图片API,如果未配置下面的关键字，主页封面，头像，文章封面图都会被替换为随机图片
-  RANDOM_IMAGE_REPLACE_TEXT: process.env.NEXT_PUBLIC_RANDOM_IMAGE_NOT_REPLACE_TEXT || 'images.unsplash.com', // 触发替换图片的 url 关键字(多个支持用英文逗号分开)，只有图片地址中包含此关键字才会替换为上方随机图片url
-  // eg: images.unsplash.com(notion图床的所有图片都会替换),如果你在 notion 里已经添加了一个随机图片 url，恰巧那个服务跑路或者挂掉，想一键切换所有配图可以将该 url 配置在这里
-  // 默认下会将你上传到 notion的主页封面图和头像也给替换，建议将主页封面图和头像放在其他图床，在 notion 里配置 link 即可。
+  RANDOM_IMAGE_URL: process.env.NEXT_PUBLIC_RANDOM_IMAGE_URL || '', // éæºå¾çAPI,å¦ææªéç½®ä¸é¢çå³é®å­ï¼ä¸»é¡µå°é¢ï¼å¤´åï¼æç« å°é¢å¾é½ä¼è¢«æ¿æ¢ä¸ºéæºå¾ç
+  RANDOM_IMAGE_REPLACE_TEXT: process.env.NEXT_PUBLIC_RANDOM_IMAGE_NOT_REPLACE_TEXT || 'images.unsplash.com', // è§¦åæ¿æ¢å¾çç url å³é®å­(å¤ä¸ªæ¯æç¨è±æéå·åå¼)ï¼åªæå¾çå°åä¸­åå«æ­¤å³é®å­æä¼æ¿æ¢ä¸ºä¸æ¹éæºå¾çurl
+  // eg: images.unsplash.com(notionå¾åºçææå¾çé½ä¼æ¿æ¢),å¦æä½ å¨ notion éå·²ç»æ·»å äºä¸ä¸ªéæºå¾ç urlï¼æ°å·§é£ä¸ªæå¡è·è·¯æèææï¼æ³ä¸é®åæ¢ææéå¾å¯ä»¥å°è¯¥ url éç½®å¨è¿é
+  // é»è®¤ä¸ä¼å°ä½ ä¸ä¼ å° notionçä¸»é¡µå°é¢å¾åå¤´åä¹ç»æ¿æ¢ï¼å»ºè®®å°ä¸»é¡µå°é¢å¾åå¤´åæ¾å¨å¶ä»å¾åºï¼å¨ notion ééç½® link å³å¯ã
 
-  // START ************网站字体*****************
+  // START ************ç½ç«å­ä½*****************
 
-  FONT_STYLE: process.env.NEXT_PUBLIC_FONT_STYLE || 'font-sans', // ['font-serif','font-sans'] 两种可选，分别是衬线和无衬线: 参考 https://www.jianshu.com/p/55e410bd2115
-  // 字体CSS 例如 https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css
+  FONT_STYLE: process.env.NEXT_PUBLIC_FONT_STYLE || 'font-sans', // ['font-serif','font-sans'] ä¸¤ç§å¯éï¼åå«æ¯è¡¬çº¿åæ è¡¬çº¿: åè https://www.jianshu.com/p/55e410bd2115
+  // å­ä½CSS ä¾å¦ https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css
   FONT_URL: [
     // 'https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css',
     'https://fonts.googleapis.com/css?family=Inter&display=swap',
     'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap',
     'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&display=swap'
   ],
-  // 无衬线字体 例如'"LXGW WenKai"'
+  // æ è¡¬çº¿å­ä½ ä¾å¦'"LXGW WenKai"'
   FONT_SANS: [
     // '"LXGW WenKai"',
     'Inter',
@@ -73,7 +71,7 @@ const BLOG = {
     'sans-serif',
     '"Apple Color Emoji"'
   ],
-  // 衬线字体 例如'"LXGW WenKai"'
+  // è¡¬çº¿å­ä½ ä¾å¦'"LXGW WenKai"'
   FONT_SERIF: [
     // '"LXGW WenKai"',
     'Inter',
@@ -87,46 +85,46 @@ const BLOG = {
     '"Segoe UI Symbol"',
     '"Apple Color Emoji"'
   ],
-  FONT_AWESOME: process.env.NEXT_PUBLIC_FONT_AWESOME_PATH || 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', // font-awesome 字体图标地址; 可选 /css/all.min.css ， https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css
+  FONT_AWESOME: process.env.NEXT_PUBLIC_FONT_AWESOME_PATH || 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', // font-awesome å­ä½å¾æ å°å; å¯é /css/all.min.css ï¼ https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css
 
-  // END ************网站字体*****************
-  CAN_COPY: process.env.NEXT_PUBLIC_CAN_COPY || true, // 是否允许复制页面内容 默认允许，如果设置为false、则全栈禁止复制内容。
-  CUSTOM_RIGHT_CLICK_CONTEXT_MENU: process.env.NEXT_PUBLIC_CUSTOM_RIGHT_CLICK_CONTEXT_MENU || false, // 自定义右键菜单，覆盖系统菜单
+  // END ************ç½ç«å­ä½*****************
+  CAN_COPY: process.env.NEXT_PUBLIC_CAN_COPY || true, // æ¯å¦åè®¸å¤å¶é¡µé¢åå®¹ é»è®¤åè®¸ï¼å¦æè®¾ç½®ä¸ºfalseãåå¨æ ç¦æ­¢å¤å¶åå®¹ã
+  CUSTOM_RIGHT_CLICK_CONTEXT_MENU: process.env.NEXT_PUBLIC_CUSTOM_RIGHT_CLICK_CONTEXT_MENU || false, // èªå®ä¹å³é®èåï¼è¦çç³»ç»èå
 
-  // 自定义外部脚本，外部样式
+  // èªå®ä¹å¤é¨èæ¬ï¼å¤é¨æ ·å¼
   CUSTOM_EXTERNAL_JS: [''], // e.g. ['http://xx.com/script.js','http://xx.com/script.js']
   CUSTOM_EXTERNAL_CSS: [''], // e.g. ['http://xx.com/style.css','http://xx.com/style.css']
 
-  // 侧栏布局 是否反转(左变右,右变左) 已支持主题: hexo next medium fukasawa example
+  // ä¾§æ å¸å± æ¯å¦åè½¬(å·¦åå³,å³åå·¦) å·²æ¯æä¸»é¢: hexo next medium fukasawa example
   LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || true,
 
-  // 一个小插件展示你的facebook fan page~ @see https://tw.andys.pro/article/add-facebook-fanpage-notionnext
-  FACEBOOK_PAGE_TITLE: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_TITLE || null, // 邊欄 Facebook Page widget 的標題欄，填''則無標題欄 e.g FACEBOOK 粉絲團'
-  FACEBOOK_PAGE: process.env.NEXT_PUBLIC_FACEBOOK_PAGE || null, // Facebook Page 的連結 e.g https://www.facebook.com/tw.andys.pro
-  FACEBOOK_PAGE_ID: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID || '', // Facebook Page ID 來啟用 messenger 聊天功能
-  FACEBOOK_APP_ID: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || '', // Facebook App ID 來啟用 messenger 聊天功能 获取: https://developers.facebook.com/
+  // ä¸ä¸ªå°æä»¶å±ç¤ºä½ çfacebook fan page~ @see https://tw.andys.pro/article/add-facebook-fanpage-notionnext
+  FACEBOOK_PAGE_TITLE: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_TITLE || null, // éæ¬ Facebook Page widget çæ¨é¡æ¬ï¼å¡«''åç¡æ¨é¡æ¬ e.g FACEBOOK ç²çµ²å'
+  FACEBOOK_PAGE: process.env.NEXT_PUBLIC_FACEBOOK_PAGE || null, // Facebook Page çé£çµ e.g https://www.facebook.com/tw.andys.pro
+  FACEBOOK_PAGE_ID: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID || '', // Facebook Page ID ä¾åç¨ messenger èå¤©åè½
+  FACEBOOK_APP_ID: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || '', // Facebook App ID ä¾åç¨ messenger èå¤©åè½ è·å: https://developers.facebook.com/
 
-  BEI_AN: process.env.NEXT_PUBLIC_BEI_AN || '', // 备案号 闽ICP备XXXXXXX
+  BEI_AN: process.env.NEXT_PUBLIC_BEI_AN || '', // å¤æ¡å· é½ICPå¤XXXXXXX
 
-  // START********代码相关********
-  // PrismJs 代码相关
+  // START********ä»£ç ç¸å³********
+  // PrismJs ä»£ç ç¸å³
   PRISM_JS_PATH: 'https://npm.elemecdn.com/prismjs@1.29.0/components/',
   PRISM_JS_AUTO_LOADER: 'https://npm.elemecdn.com/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js',
 
-  // 代码主题 @see https://github.com/PrismJS/prism-themes
-  PRISM_THEME_PREFIX_PATH: process.env.NEXT_PUBLIC_PRISM_THEME_PREFIX_PATH || 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css', // 代码块默认主题
-  PRISM_THEME_SWITCH: process.env.NEXT_PUBLIC_PRISM_THEME_SWITCH || true, // 是否开启浅色/深色模式代码主题切换； 开启后将显示以下两个主题
-  PRISM_THEME_LIGHT_PATH: process.env.NEXT_PUBLIC_PRISM_THEME_LIGHT_PATH || 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-solarizedlight.css', // 浅色模式主题
-  PRISM_THEME_DARK_PATH: process.env.NEXT_PUBLIC_PRISM_THEME_DARK_PATH || 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css', // 深色模式主题
+  // ä»£ç ä¸»é¢ @see https://github.com/PrismJS/prism-themes
+  PRISM_THEME_PREFIX_PATH: process.env.NEXT_PUBLIC_PRISM_THEME_PREFIX_PATH || 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css', // ä»£ç åé»è®¤ä¸»é¢
+  PRISM_THEME_SWITCH: process.env.NEXT_PUBLIC_PRISM_THEME_SWITCH || true, // æ¯å¦å¼å¯æµè²/æ·±è²æ¨¡å¼ä»£ç ä¸»é¢åæ¢ï¼ å¼å¯åå°æ¾ç¤ºä»¥ä¸ä¸¤ä¸ªä¸»é¢
+  PRISM_THEME_LIGHT_PATH: process.env.NEXT_PUBLIC_PRISM_THEME_LIGHT_PATH || 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-solarizedlight.css', // æµè²æ¨¡å¼ä¸»é¢
+  PRISM_THEME_DARK_PATH: process.env.NEXT_PUBLIC_PRISM_THEME_DARK_PATH || 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css', // æ·±è²æ¨¡å¼ä¸»é¢
 
-  CODE_MAC_BAR: process.env.NEXT_PUBLIC_CODE_MAC_BAR || true, // 代码左上角显示mac的红黄绿图标
-  CODE_LINE_NUMBERS: process.env.NEXT_PUBLIC_CODE_LINE_NUMBERS || true, // 是否显示行号
-  CODE_COLLAPSE: process.env.NEXT_PUBLIC_CODE_COLLAPSE || true, // 是否支持折叠代码框
-  CODE_COLLAPSE_EXPAND_DEFAULT: process.env.NEXT_PUBLIC_CODE_COLLAPSE_EXPAND_DEFAULT || true, // 折叠代码默认是展开状态
+  CODE_MAC_BAR: process.env.NEXT_PUBLIC_CODE_MAC_BAR || true, // ä»£ç å·¦ä¸è§æ¾ç¤ºmacççº¢é»ç»¿å¾æ 
+  CODE_LINE_NUMBERS: process.env.NEXT_PUBLIC_CODE_LINE_NUMBERS || true, // æ¯å¦æ¾ç¤ºè¡å·
+  CODE_COLLAPSE: process.env.NEXT_PUBLIC_CODE_COLLAPSE || true, // æ¯å¦æ¯ææå ä»£ç æ¡
+  CODE_COLLAPSE_EXPAND_DEFAULT: process.env.NEXT_PUBLIC_CODE_COLLAPSE_EXPAND_DEFAULT || true, // æå ä»£ç é»è®¤æ¯å±å¼ç¶æ
 
-  // END********代码相关********
+  // END********ä»£ç ç¸å³********
 
-  // Mermaid 图表CDN
+  // Mermaid å¾è¡¨CDN
   MERMAID_CDN: process.env.NEXT_PUBLIC_MERMAID_CDN || 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.4/mermaid.min.js', // CDN
   // QRCodeCDN
   QR_CODE_CDN: process.env.NEXT_PUBLIC_QR_CODE_CDN || 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js',
@@ -135,38 +133,38 @@ const BLOG = {
   BACKGROUND_DARK: '#212F3D', // use hex value, don't forget '#'
   SUB_PATH: '', // leave this empty unless you want to deploy in a folder
 
-  POST_SHARE_BAR_ENABLE: process.env.NEXT_PUBLIC_POST_SHARE_BAR || 'true', // 文章分享功能 ，将在底部显示一个分享条
-  POSTS_SHARE_SERVICES: process.env.NEXT_PUBLIC_POST_SHARE_SERVICES || 'link,email,instapaper', // 分享的服務，按顺序显示,逗号隔开
-  // 所有支持的分享服务：link(复制链接),wechat(微信),qq,weibo(微博),email(邮件),facebook,twitter,telegram,messenger,line,reddit,whatsapp,linkedin,vkshare,okshare,tumblr,livejournal,mailru,viber,workplace,pocket,instapaper,hatena
+  POST_SHARE_BAR_ENABLE: process.env.NEXT_PUBLIC_POST_SHARE_BAR || 'true', // æç« åäº«åè½ ï¼å°å¨åºé¨æ¾ç¤ºä¸ä¸ªåäº«æ¡
+  POSTS_SHARE_SERVICES: process.env.NEXT_PUBLIC_POST_SHARE_SERVICES || 'link,email,instapaper', // åäº«çæåï¼æé¡ºåºæ¾ç¤º,éå·éå¼
+  // æææ¯æçåäº«æå¡ï¼link(å¤å¶é¾æ¥),wechat(å¾®ä¿¡),qq,weibo(å¾®å),email(é®ä»¶),facebook,twitter,telegram,messenger,line,reddit,whatsapp,linkedin,vkshare,okshare,tumblr,livejournal,mailru,viber,workplace,pocket,instapaper,hatena
 
   POST_URL_PREFIX: process.env.NEXT_PUBLIC_POST_URL_PREFIX || 'article',
-  // POST类型文章的默认路径前缀，例如默认POST类型的路径是  /article/[slug]
-  // 如果此项配置为 '' 空， 则文章将没有前缀路径，使用场景： 希望文章前缀路径为 /post 的情况 支持多级
-  // 支援類似 WP 可自訂文章連結格式的功能：https://wordpress.org/documentation/article/customize-permalinks/，目前只先實作 %year%/%month%/%day%
-  // 例：如想連結改成前綴 article + 時間戳記，可變更為： 'article/%year%/%month%/%day%'
+  // POSTç±»åæç« çé»è®¤è·¯å¾åç¼ï¼ä¾å¦é»è®¤POSTç±»åçè·¯å¾æ¯  /article/[slug]
+  // å¦ææ­¤é¡¹éç½®ä¸º '' ç©ºï¼ åæç« å°æ²¡æåç¼è·¯å¾ï¼ä½¿ç¨åºæ¯ï¼ å¸ææç« åç¼è·¯å¾ä¸º /post çæåµ æ¯æå¤çº§
+  // æ¯æ´é¡ä¼¼ WP å¯èªè¨æç« é£çµæ ¼å¼çåè½ï¼https://wordpress.org/documentation/article/customize-permalinks/ï¼ç®ååªåå¯¦ä½ %year%/%month%/%day%
+  // ä¾ï¼å¦æ³é£çµæ¹æåç¶´ article + æéæ³è¨ï¼å¯è®æ´çºï¼ 'article/%year%/%month%/%day%'
 
-  POST_LIST_STYLE: process.env.NEXT_PUBLIC_POST_LIST_STYLE || 'page', // ['page','scroll] 文章列表样式:页码分页、单页滚动加载
-  POST_LIST_PREVIEW: process.env.NEXT_PUBLIC_POST_PREVIEW || 'false', //  是否在列表加载文章预览
-  POST_PREVIEW_LINES: 6, // 预览博客行数
-  POST_RECOMMEND_COUNT: 2, // 推荐文章数量
+  POST_LIST_STYLE: process.env.NEXT_PUBLIC_POST_LIST_STYLE || 'page', // ['page','scroll] æç« åè¡¨æ ·å¼:é¡µç åé¡µãåé¡µæ»å¨å è½½
+  POST_LIST_PREVIEW: process.env.NEXT_PUBLIC_POST_PREVIEW || 'false', //  æ¯å¦å¨åè¡¨å è½½æç« é¢è§
+  POST_PREVIEW_LINES: 6, // é¢è§åå®¢è¡æ°
+  POST_RECOMMEND_COUNT: 2, // æ¨èæç« æ°é
   POSTS_PER_PAGE: 4, // post counts per page
-  POSTS_SORT_BY: process.env.NEXT_PUBLIC_POST_SORT_BY || 'date', // 排序方式 'date'按时间,'notion'由notion控制
+  POSTS_SORT_BY: process.env.NEXT_PUBLIC_POST_SORT_BY || 'date', // æåºæ¹å¼ 'date'ææ¶é´,'notion'ç±notionæ§å¶
 
-  ALGOLIA_APP_ID: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || null, // 在这里查看 https://dashboard.algolia.com/account/api-keys/
-  ALGOLIA_ADMIN_APP_KEY: process.env.ALGOLIA_ADMIN_APP_KEY || null, // 管理后台的KEY，不要暴露在代码中，在这里查看 https://dashboard.algolia.com/account/api-keys/
-  ALGOLIA_SEARCH_ONLY_APP_KEY: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_APP_KEY || null, // 客户端搜索用的KEY
-  ALGOLIA_INDEX: process.env.NEXT_PUBLIC_ALGOLIA_INDEX || null, // 在Algolia中创建一个index用作数据库
-  //   ALGOLIA_RECREATE_DATA: process.env.ALGOLIA_RECREATE_DATA || process.env.npm_lifecycle_event === 'build', // 为true时重新构建索引数据; 默认在build时会构建
+  ALGOLIA_APP_ID: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || null, // å¨è¿éæ¥ç https://dashboard.algolia.com/account/api-keys/
+  ALGOLIA_ADMIN_APP_KEY: process.env.ALGOLIA_ADMIN_APP_KEY || null, // ç®¡çåå°çKEYï¼ä¸è¦æ´é²å¨ä»£ç ä¸­ï¼å¨è¿éæ¥ç https://dashboard.algolia.com/account/api-keys/
+  ALGOLIA_SEARCH_ONLY_APP_KEY: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_APP_KEY || null, // å®¢æ·ç«¯æç´¢ç¨çKEY
+  ALGOLIA_INDEX: process.env.NEXT_PUBLIC_ALGOLIA_INDEX || null, // å¨Algoliaä¸­åå»ºä¸ä¸ªindexç¨ä½æ°æ®åº
+  //   ALGOLIA_RECREATE_DATA: process.env.ALGOLIA_RECREATE_DATA || process.env.npm_lifecycle_event === 'build', // ä¸ºtrueæ¶éæ°æå»ºç´¢å¼æ°æ®; é»è®¤å¨buildæ¶ä¼æå»º
 
-  PREVIEW_CATEGORY_COUNT: 5, // 首页最多展示的分类数量，0为不限制
-  PREVIEW_TAG_COUNT: 5, // 首页最多展示的标签数量，0为不限制
+  PREVIEW_CATEGORY_COUNT: 5, // é¦é¡µæå¤å±ç¤ºçåç±»æ°éï¼0ä¸ºä¸éå¶
+  PREVIEW_TAG_COUNT: 5, // é¦é¡µæå¤å±ç¤ºçæ ç­¾æ°éï¼0ä¸ºä¸éå¶
 
-  POST_DISABLE_GALLERY_CLICK: process.env.NEXT_PUBLIC_POST_DISABLE_GALLERY_CLICK || false, // 画册视图禁止点击，方便在友链页面的画册插入链接
+  POST_DISABLE_GALLERY_CLICK: process.env.NEXT_PUBLIC_POST_DISABLE_GALLERY_CLICK || false, // ç»åè§å¾ç¦æ­¢ç¹å»ï¼æ¹ä¾¿å¨åé¾é¡µé¢çç»åæå¥é¾æ¥
 
-  //   ********动态特效相关********
-  // 鼠标点击烟花特效
-  FIREWORKS: process.env.NEXT_PUBLIC_FIREWORKS || false, // 开关
-  // 烟花色彩，感谢 https://github.com/Vixcity 提交的色彩
+  //   ********å¨æç¹æç¸å³********
+  // é¼ æ ç¹å»çè±ç¹æ
+  FIREWORKS: process.env.NEXT_PUBLIC_FIREWORKS || false, // å¼å³
+  // çè±è²å½©ï¼æè°¢ https://github.com/Vixcity æäº¤çè²å½©
   FIREWORKS_COLOR: [
     '255, 20, 97',
     '24, 255, 146',
@@ -174,162 +172,162 @@ const BLOG = {
     '251, 243, 140'
   ],
 
-  // 樱花飘落特效
-  SAKURA: process.env.NEXT_PUBLIC_SAKURA || false, // 开关
-  // 漂浮线段特效
-  NEST: process.env.NEXT_PUBLIC_NEST || false, // 开关
-  // 动态彩带特效
-  FLUTTERINGRIBBON: process.env.NEXT_PUBLIC_FLUTTERINGRIBBON || false, // 开关
-  // 静态彩带特效
-  RIBBON: process.env.NEXT_PUBLIC_RIBBON || false, // 开关
-  // 星空雨特效 黑夜模式才会生效
-  STARRY_SKY: process.env.NEXT_PUBLIC_STARRY_SKY || false, // 开关
+  // æ¨±è±é£è½ç¹æ
+  SAKURA: process.env.NEXT_PUBLIC_SAKURA || false, // å¼å³
+  // æ¼æµ®çº¿æ®µç¹æ
+  NEST: process.env.NEXT_PUBLIC_NEST || false, // å¼å³
+  // å¨æå½©å¸¦ç¹æ
+  FLUTTERINGRIBBON: process.env.NEXT_PUBLIC_FLUTTERINGRIBBON || false, // å¼å³
+  // éæå½©å¸¦ç¹æ
+  RIBBON: process.env.NEXT_PUBLIC_RIBBON || false, // å¼å³
+  // æç©ºé¨ç¹æ é»å¤æ¨¡å¼æä¼çæ
+  STARRY_SKY: process.env.NEXT_PUBLIC_STARRY_SKY || false, // å¼å³
 
-  //   ********挂件组件相关********
-  // Chatbase 是否显示chatbase机器人 https://www.chatbase.co/
+  //   ********æä»¶ç»ä»¶ç¸å³********
+  // Chatbase æ¯å¦æ¾ç¤ºchatbaseæºå¨äºº https://www.chatbase.co/
   CHATBASE_ID: process.env.NEXT_PUBLIC_CHATBASE_ID || null,
-  // WebwhizAI 机器人 @see https://github.com/webwhiz-ai/webwhiz
-  WEB_WHIZ_ENABLED: process.env.NEXT_PUBLIC_WEB_WHIZ_ENABLED || false, // 是否显示
-  WEB_WHIZ_BASE_URL: process.env.NEXT_PUBLIC_WEB_WHIZ_BASE_URL || 'https://api.webwhiz.ai', // 可以自建服务器
-  WEB_WHIZ_CHAT_BOT_ID: process.env.NEXT_PUBLIC_WEB_WHIZ_CHAT_BOT_ID || null, // 在后台获取ID
+  // WebwhizAI æºå¨äºº @see https://github.com/webwhiz-ai/webwhiz
+  WEB_WHIZ_ENABLED: process.env.NEXT_PUBLIC_WEB_WHIZ_ENABLED || false, // æ¯å¦æ¾ç¤º
+  WEB_WHIZ_BASE_URL: process.env.NEXT_PUBLIC_WEB_WHIZ_BASE_URL || 'https://api.webwhiz.ai', // å¯ä»¥èªå»ºæå¡å¨
+  WEB_WHIZ_CHAT_BOT_ID: process.env.NEXT_PUBLIC_WEB_WHIZ_CHAT_BOT_ID || null, // å¨åå°è·åID
 
-  // 悬浮挂件
-  WIDGET_PET: process.env.NEXT_PUBLIC_WIDGET_PET || false, // 是否显示宠物挂件
+  // æ¬æµ®æä»¶
+  WIDGET_PET: process.env.NEXT_PUBLIC_WIDGET_PET || false, // æ¯å¦æ¾ç¤ºå® ç©æä»¶
   WIDGET_PET_LINK:
         process.env.NEXT_PUBLIC_WIDGET_PET_LINK ||
-        'https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json', // 挂件模型地址 @see https://github.com/xiazeyu/live2d-widget-models
-  WIDGET_PET_SWITCH_THEME: process.env.NEXT_PUBLIC_WIDGET_PET_SWITCH_THEME || true, // 点击宠物挂件切换博客主题
+        'https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json', // æä»¶æ¨¡åå°å @see https://github.com/xiazeyu/live2d-widget-models
+  WIDGET_PET_SWITCH_THEME: process.env.NEXT_PUBLIC_WIDGET_PET_SWITCH_THEME || true, // ç¹å»å® ç©æä»¶åæ¢åå®¢ä¸»é¢
 
-  // 音乐播放插件
-  MUSIC_PLAYER: process.env.NEXT_PUBLIC_MUSIC_PLAYER || false, // 是否使用音乐播放插件
-  MUSIC_PLAYER_VISIBLE: process.env.NEXT_PUBLIC_MUSIC_PLAYER_VISIBLE || true, // 是否在左下角显示播放和切换，如果使用播放器，打开自动播放再隐藏，就会以类似背景音乐的方式播放，无法取消和暂停
+  // é³ä¹æ­æ¾æä»¶
+  MUSIC_PLAYER: process.env.NEXT_PUBLIC_MUSIC_PLAYER || false, // æ¯å¦ä½¿ç¨é³ä¹æ­æ¾æä»¶
+  MUSIC_PLAYER_VISIBLE: process.env.NEXT_PUBLIC_MUSIC_PLAYER_VISIBLE || true, // æ¯å¦å¨å·¦ä¸è§æ¾ç¤ºæ­æ¾ååæ¢ï¼å¦æä½¿ç¨æ­æ¾å¨ï¼æå¼èªå¨æ­æ¾åéèï¼å°±ä¼ä»¥ç±»ä¼¼èæ¯é³ä¹çæ¹å¼æ­æ¾ï¼æ æ³åæ¶åæå
   MUSIC_PLAYER_AUTO_PLAY:
-        process.env.NEXT_PUBLIC_MUSIC_PLAYER_AUTO_PLAY || true, // 是否自动播放，不过自动播放时常不生效（移动设备不支持自动播放）
-  MUSIC_PLAYER_LRC_TYPE: process.env.NEXT_PUBLIC_MUSIC_PLAYER_LRC_TYPE || '0', // 歌词显示类型，可选值： 3 | 1 | 0（0：禁用 lrc 歌词，1：lrc 格式的字符串，3：lrc 文件 url）（前提是有配置歌词路径，对 meting 无效）
+        process.env.NEXT_PUBLIC_MUSIC_PLAYER_AUTO_PLAY || true, // æ¯å¦èªå¨æ­æ¾ï¼ä¸è¿èªå¨æ­æ¾æ¶å¸¸ä¸çæï¼ç§»å¨è®¾å¤ä¸æ¯æèªå¨æ­æ¾ï¼
+  MUSIC_PLAYER_LRC_TYPE: process.env.NEXT_PUBLIC_MUSIC_PLAYER_LRC_TYPE || '0', // æ­è¯æ¾ç¤ºç±»åï¼å¯éå¼ï¼ 3 | 1 | 0ï¼0ï¼ç¦ç¨ lrc æ­è¯ï¼1ï¼lrc æ ¼å¼çå­ç¬¦ä¸²ï¼3ï¼lrc æä»¶ urlï¼ï¼åææ¯æéç½®æ­è¯è·¯å¾ï¼å¯¹ meting æ æï¼
   MUSIC_PLAYER_CDN_URL:
         process.env.NEXT_PUBLIC_MUSIC_PLAYER_CDN_URL ||
         'https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js',
-  MUSIC_PLAYER_ORDER: process.env.NEXT_PUBLIC_MUSIC_PLAYER_ORDER || 'list', // 默认播放方式，顺序 list，随机 random
+  MUSIC_PLAYER_ORDER: process.env.NEXT_PUBLIC_MUSIC_PLAYER_ORDER || 'list', // é»è®¤æ­æ¾æ¹å¼ï¼é¡ºåº listï¼éæº random
   MUSIC_PLAYER_AUDIO_LIST: [
-    // 示例音乐列表。除了以下配置外，还可配置歌词，具体配置项看此文档 https://aplayer.js.org/#/zh-Hans/
+    // ç¤ºä¾é³ä¹åè¡¨ãé¤äºä»¥ä¸éç½®å¤ï¼è¿å¯éç½®æ­è¯ï¼å·ä½éç½®é¡¹çæ­¤ææ¡£ https://aplayer.js.org/#/zh-Hans/
     {
-      name: '风を共に舞う気持ち',
+      name: 'é£ãå±ã«èãæ°æã¡',
       artist: 'Falcom Sound Team jdk',
       url: 'https://music.163.com/song/media/outer/url?id=731419.mp3',
       cover:
             'https://p2.music.126.net/kn6ugISTonvqJh3LHLaPtQ==/599233837187278.jpg'
     },
     {
-      name: '王都グランセル',
+      name: 'çé½ã°ã©ã³ã»ã«',
       artist: 'Falcom Sound Team jdk',
       url: 'https://music.163.com/song/media/outer/url?id=731355.mp3',
       cover:
             'https://p1.music.126.net/kn6ugISTonvqJh3LHLaPtQ==/599233837187278.jpg'
     }
   ],
-  MUSIC_PLAYER_METING: process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING || false, // 是否要开启 MetingJS，从平台获取歌单。会覆盖自定义的 MUSIC_PLAYER_AUDIO_LIST，更多配置信息：https://github.com/metowolf/MetingJS
+  MUSIC_PLAYER_METING: process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING || false, // æ¯å¦è¦å¼å¯ MetingJSï¼ä»å¹³å°è·åæ­åãä¼è¦çèªå®ä¹ç MUSIC_PLAYER_AUDIO_LISTï¼æ´å¤éç½®ä¿¡æ¯ï¼https://github.com/metowolf/MetingJS
   MUSIC_PLAYER_METING_SERVER:
-        process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_SERVER || 'netease', // 音乐平台，[netease, tencent, kugou, xiami, baidu]
+        process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_SERVER || 'netease', // é³ä¹å¹³å°ï¼[netease, tencent, kugou, xiami, baidu]
   MUSIC_PLAYER_METING_ID:
-        process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_ID || '60198', // 对应歌单的 id
+        process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_ID || '60198', // å¯¹åºæ­åç id
   MUSIC_PLAYER_METING_LRC_TYPE:
-        process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_LRC_TYPE || '1', // 可选值： 3 | 1 | 0（0：禁用 lrc 歌词，1：lrc 格式的字符串，3：lrc 文件 url）
+        process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_LRC_TYPE || '1', // å¯éå¼ï¼ 3 | 1 | 0ï¼0ï¼ç¦ç¨ lrc æ­è¯ï¼1ï¼lrc æ ¼å¼çå­ç¬¦ä¸²ï¼3ï¼lrc æä»¶ urlï¼
 
-  //   ********挂件组件相关********
-  // ----> 评论互动 可同时开启多个支持 WALINE VALINE GISCUS CUSDIS UTTERRANCES GITALK
+  //   ********æä»¶ç»ä»¶ç¸å³********
+  // ----> è¯è®ºäºå¨ å¯åæ¶å¼å¯å¤ä¸ªæ¯æ WALINE VALINE GISCUS CUSDIS UTTERRANCES GITALK
 
-  // artalk 评论插件
-  COMMENT_ARTALK_SERVER: process.env.NEXT_PUBLIC_COMMENT_ARTALK_SERVER || '', // ArtalkServert后端地址 https://artalk.js.org/guide/deploy.html
+  // artalk è¯è®ºæä»¶
+  COMMENT_ARTALK_SERVER: process.env.NEXT_PUBLIC_COMMENT_ARTALK_SERVER || '', // ArtalkServertåç«¯å°å https://artalk.js.org/guide/deploy.html
   COMMENT_ARTALK_JS: process.env.NEXT_PUBLIC_COMMENT_ARTALK_JS || 'https://cdnjs.cloudflare.com/ajax/libs/artalk/2.5.5/Artalk.js', // ArtalkServert js cdn
   COMMENT_ARTALK_CSS: process.env.NEXT_PUBLIC_COMMENT_ARTALK_CSS || 'https://cdnjs.cloudflare.com/ajax/libs/artalk/2.5.5/Artalk.css', // ArtalkServert css cdn
 
   // twikoo
-  COMMENT_TWIKOO_ENV_ID: process.env.NEXT_PUBLIC_COMMENT_ENV_ID || '', // TWIKOO后端地址 腾讯云环境填envId；Vercel环境填域名，教程：https://tangly1024.com/article/notionnext-twikoo
-  COMMENT_TWIKOO_COUNT_ENABLE: process.env.NEXT_PUBLIC_COMMENT_TWIKOO_COUNT_ENABLE || false, // 博客列表是否显示评论数
-  COMMENT_TWIKOO_CDN_URL: process.env.NEXT_PUBLIC_COMMENT_TWIKOO_CDN_URL || 'https://cdn.staticfile.org/twikoo/1.6.17/twikoo.min.js', // twikoo客户端cdn
+  COMMENT_TWIKOO_ENV_ID: process.env.NEXT_PUBLIC_COMMENT_ENV_ID || '', // TWIKOOåç«¯å°å è¾è®¯äºç¯å¢å¡«envIdï¼Vercelç¯å¢å¡«ååï¼æç¨ï¼https://tangly1024.com/article/notionnext-twikoo
+  COMMENT_TWIKOO_COUNT_ENABLE: process.env.NEXT_PUBLIC_COMMENT_TWIKOO_COUNT_ENABLE || false, // åå®¢åè¡¨æ¯å¦æ¾ç¤ºè¯è®ºæ°
+  COMMENT_TWIKOO_CDN_URL: process.env.NEXT_PUBLIC_COMMENT_TWIKOO_CDN_URL || 'https://cdn.staticfile.org/twikoo/1.6.17/twikoo.min.js', // twikooå®¢æ·ç«¯cdn
 
   // utterance
   COMMENT_UTTERRANCES_REPO:
-        process.env.NEXT_PUBLIC_COMMENT_UTTERRANCES_REPO || '', // 你的代码仓库名， 例如我是 'tangly1024/NotionNext'； 更多文档参考 https://utteranc.es/
+        process.env.NEXT_PUBLIC_COMMENT_UTTERRANCES_REPO || '', // ä½ çä»£ç ä»åºåï¼ ä¾å¦ææ¯ 'tangly1024/NotionNext'ï¼ æ´å¤ææ¡£åè https://utteranc.es/
 
   // giscus @see https://giscus.app/
-  COMMENT_GISCUS_REPO: process.env.NEXT_PUBLIC_COMMENT_GISCUS_REPO || '', // 你的Github仓库名 e.g 'tangly1024/NotionNext'
-  COMMENT_GISCUS_REPO_ID: process.env.NEXT_PUBLIC_COMMENT_GISCUS_REPO_ID || '', // 你的Github Repo ID e.g ( 設定完 giscus 即可看到 )
+  COMMENT_GISCUS_REPO: process.env.NEXT_PUBLIC_COMMENT_GISCUS_REPO || '', // ä½ çGithubä»åºå e.g 'tangly1024/NotionNext'
+  COMMENT_GISCUS_REPO_ID: process.env.NEXT_PUBLIC_COMMENT_GISCUS_REPO_ID || '', // ä½ çGithub Repo ID e.g ( è¨­å®å® giscus å³å¯çå° )
   COMMENT_GISCUS_CATEGORY_ID:
-        process.env.NEXT_PUBLIC_COMMENT_GISCUS_CATEGORY_ID || '', // 你的Github Discussions 內的 Category ID ( 設定完 giscus 即可看到 )
+        process.env.NEXT_PUBLIC_COMMENT_GISCUS_CATEGORY_ID || '', // ä½ çGithub Discussions å§ç Category ID ( è¨­å®å® giscus å³å¯çå° )
   COMMENT_GISCUS_MAPPING:
-        process.env.NEXT_PUBLIC_COMMENT_GISCUS_MAPPING || 'pathname', // 你的Github Discussions 使用哪種方式來標定文章, 預設 'pathname'
+        process.env.NEXT_PUBLIC_COMMENT_GISCUS_MAPPING || 'pathname', // ä½ çGithub Discussions ä½¿ç¨åªç¨®æ¹å¼ä¾æ¨å®æç« , é è¨­ 'pathname'
   COMMENT_GISCUS_REACTIONS_ENABLED:
-        process.env.NEXT_PUBLIC_COMMENT_GISCUS_REACTIONS_ENABLED || '1', // 你的 Giscus 是否開啟文章表情符號 '1' 開啟 "0" 關閉 預設開啟
+        process.env.NEXT_PUBLIC_COMMENT_GISCUS_REACTIONS_ENABLED || '1', // ä½ ç Giscus æ¯å¦éåæç« è¡¨æç¬¦è '1' éå "0" éé é è¨­éå
   COMMENT_GISCUS_EMIT_METADATA:
-        process.env.NEXT_PUBLIC_COMMENT_GISCUS_EMIT_METADATA || '0', // 你的 Giscus 是否提取 Metadata '1' 開啟 '0' 關閉 預設關閉
+        process.env.NEXT_PUBLIC_COMMENT_GISCUS_EMIT_METADATA || '0', // ä½ ç Giscus æ¯å¦æå Metadata '1' éå '0' éé é è¨­éé
   COMMENT_GISCUS_INPUT_POSITION:
-        process.env.NEXT_PUBLIC_COMMENT_GISCUS_INPUT_POSITION || 'bottom', // 你的 Giscus 發表留言位置 'bottom' 尾部 'top' 頂部, 預設 'bottom'
-  COMMENT_GISCUS_LANG: process.env.NEXT_PUBLIC_COMMENT_GISCUS_LANG || 'zh-CN', // 你的 Giscus 語言 e.g 'en', 'zh-TW', 'zh-CN', 預設 'en'
+        process.env.NEXT_PUBLIC_COMMENT_GISCUS_INPUT_POSITION || 'bottom', // ä½ ç Giscus ç¼è¡¨çè¨ä½ç½® 'bottom' å°¾é¨ 'top' é é¨, é è¨­ 'bottom'
+  COMMENT_GISCUS_LANG: process.env.NEXT_PUBLIC_COMMENT_GISCUS_LANG || 'zh-CN', // ä½ ç Giscus èªè¨ e.g 'en', 'zh-TW', 'zh-CN', é è¨­ 'en'
   COMMENT_GISCUS_LOADING:
-        process.env.NEXT_PUBLIC_COMMENT_GISCUS_LOADING || 'lazy', // 你的 Giscus 載入是否漸進式載入, 預設 'lazy'
+        process.env.NEXT_PUBLIC_COMMENT_GISCUS_LOADING || 'lazy', // ä½ ç Giscus è¼å¥æ¯å¦æ¼¸é²å¼è¼å¥, é è¨­ 'lazy'
   COMMENT_GISCUS_CROSSORIGIN:
-        process.env.NEXT_PUBLIC_COMMENT_GISCUS_CROSSORIGIN || 'anonymous', // 你的 Giscus 可以跨網域, 預設 'anonymous'
+        process.env.NEXT_PUBLIC_COMMENT_GISCUS_CROSSORIGIN || 'anonymous', // ä½ ç Giscus å¯ä»¥è·¨ç¶²å, é è¨­ 'anonymous'
 
-  COMMENT_CUSDIS_APP_ID: process.env.NEXT_PUBLIC_COMMENT_CUSDIS_APP_ID || '', // data-app-id 36位 see https://cusdis.com/
+  COMMENT_CUSDIS_APP_ID: process.env.NEXT_PUBLIC_COMMENT_CUSDIS_APP_ID || '', // data-app-id 36ä½ see https://cusdis.com/
   COMMENT_CUSDIS_HOST:
         process.env.NEXT_PUBLIC_COMMENT_CUSDIS_HOST || 'https://cusdis.com', // data-host, change this if you're using self-hosted version
   COMMENT_CUSDIS_SCRIPT_SRC:
         process.env.NEXT_PUBLIC_COMMENT_CUSDIS_SCRIPT_SRC ||
         '/js/cusdis.es.js', // change this if you're using self-hosted version
 
-  // gitalk评论插件 更多参考 https://gitalk.github.io/
-  COMMENT_GITALK_REPO: process.env.NEXT_PUBLIC_COMMENT_GITALK_REPO || '', // 你的Github仓库名，例如 'NotionNext'
-  COMMENT_GITALK_OWNER: process.env.NEXT_PUBLIC_COMMENT_GITALK_OWNER || '', // 你的用户名 e.g tangly1024
-  COMMENT_GITALK_ADMIN: process.env.NEXT_PUBLIC_COMMENT_GITALK_ADMIN || '', // 管理员用户名、一般是自己 e.g 'tangly1024'
+  // gitalkè¯è®ºæä»¶ æ´å¤åè https://gitalk.github.io/
+  COMMENT_GITALK_REPO: process.env.NEXT_PUBLIC_COMMENT_GITALK_REPO || '', // ä½ çGithubä»åºåï¼ä¾å¦ 'NotionNext'
+  COMMENT_GITALK_OWNER: process.env.NEXT_PUBLIC_COMMENT_GITALK_OWNER || '', // ä½ çç¨æ·å e.g tangly1024
+  COMMENT_GITALK_ADMIN: process.env.NEXT_PUBLIC_COMMENT_GITALK_ADMIN || '', // ç®¡çåç¨æ·åãä¸è¬æ¯èªå·± e.g 'tangly1024'
   COMMENT_GITALK_CLIENT_ID:
-        process.env.NEXT_PUBLIC_COMMENT_GITALK_CLIENT_ID || '', // e.g 20位ID ， 在gitalk后台获取
+        process.env.NEXT_PUBLIC_COMMENT_GITALK_CLIENT_ID || '', // e.g 20ä½ID ï¼ å¨gitalkåå°è·å
   COMMENT_GITALK_CLIENT_SECRET:
-        process.env.NEXT_PUBLIC_COMMENT_GITALK_CLIENT_SECRET || '', // e.g 40位ID， 在gitalk后台获取
-  COMMENT_GITALK_DISTRACTION_FREE_MODE: false, // 类似facebook的无干扰模式
-  COMMENT_GITALK_JS_CDN_URL: process.env.NEXT_PUBLIC_COMMENT_GITALK_JS_CDN_URL || 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', // gitalk客户端 js cdn
-  COMMENT_GITALK_CSS_CDN_URL: process.env.NEXT_PUBLIC_COMMENT_GITALK_CSS_CDN_URL || 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css', // gitalk客户端 css cdn
+        process.env.NEXT_PUBLIC_COMMENT_GITALK_CLIENT_SECRET || '', // e.g 40ä½IDï¼ å¨gitalkåå°è·å
+  COMMENT_GITALK_DISTRACTION_FREE_MODE: false, // ç±»ä¼¼facebookçæ å¹²æ°æ¨¡å¼
+  COMMENT_GITALK_JS_CDN_URL: process.env.NEXT_PUBLIC_COMMENT_GITALK_JS_CDN_URL || 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', // gitalkå®¢æ·ç«¯ js cdn
+  COMMENT_GITALK_CSS_CDN_URL: process.env.NEXT_PUBLIC_COMMENT_GITALK_CSS_CDN_URL || 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css', // gitalkå®¢æ·ç«¯ css cdn
 
-  COMMENT_GITTER_ROOM: process.env.NEXT_PUBLIC_COMMENT_GITTER_ROOM || '', // gitter聊天室 see https://gitter.im/ 不需要则留空
+  COMMENT_GITTER_ROOM: process.env.NEXT_PUBLIC_COMMENT_GITTER_ROOM || '', // gitterèå¤©å®¤ see https://gitter.im/ ä¸éè¦åçç©º
   COMMENT_DAO_VOICE_ID: process.env.NEXT_PUBLIC_COMMENT_DAO_VOICE_ID || '', // DaoVoice http://dashboard.daovoice.io/get-started
   COMMENT_TIDIO_ID: process.env.NEXT_PUBLIC_COMMENT_TIDIO_ID || '', // [tidio_id] -> //code.tidio.co/[tidio_id].js
 
   COMMENT_VALINE_CDN: process.env.NEXT_PUBLIC_VALINE_CDN || 'https://unpkg.com/valine@1.5.1/dist/Valine.min.js',
-  COMMENT_VALINE_APP_ID: process.env.NEXT_PUBLIC_VALINE_ID || '', // Valine @see https://valine.js.org/quickstart.html 或 https://github.com/stonehank/react-valine#%E8%8E%B7%E5%8F%96app-id-%E5%92%8C-app-key
+  COMMENT_VALINE_APP_ID: process.env.NEXT_PUBLIC_VALINE_ID || '', // Valine @see https://valine.js.org/quickstart.html æ https://github.com/stonehank/react-valine#%E8%8E%B7%E5%8F%96app-id-%E5%92%8C-app-key
   COMMENT_VALINE_APP_KEY: process.env.NEXT_PUBLIC_VALINE_KEY || '',
-  COMMENT_VALINE_SERVER_URLS: process.env.NEXT_PUBLIC_VALINE_SERVER_URLS || '', // 该配置适用于国内自定义域名用户, 海外版本会自动检测(无需手动填写) @see https://valine.js.org/configuration.html#serverURLs
+  COMMENT_VALINE_SERVER_URLS: process.env.NEXT_PUBLIC_VALINE_SERVER_URLS || '', // è¯¥éç½®éç¨äºå½åèªå®ä¹ååç¨æ·, æµ·å¤çæ¬ä¼èªå¨æ£æµ(æ éæå¨å¡«å) @see https://valine.js.org/configuration.html#serverURLs
   COMMENT_VALINE_PLACEHOLDER:
-        process.env.NEXT_PUBLIC_VALINE_PLACEHOLDER || 'Take a seat', // 可以搭配后台管理评论 https://github.com/DesertsP/Valine-Admin  便于查看评论，以及邮件通知，垃圾评论过滤等功能
+        process.env.NEXT_PUBLIC_VALINE_PLACEHOLDER || 'Take a seat', // å¯ä»¥æ­éåå°ç®¡çè¯è®º https://github.com/DesertsP/Valine-Admin  ä¾¿äºæ¥çè¯è®ºï¼ä»¥åé®ä»¶éç¥ï¼åå¾è¯è®ºè¿æ»¤ç­åè½
 
-  COMMENT_WALINE_SERVER_URL: process.env.NEXT_PUBLIC_WALINE_SERVER_URL || '', // 请配置完整的Waline评论地址 例如 hhttps://preview-waline.tangly1024.com @see https://waline.js.org/guide/get-started.html
-  COMMENT_WALINE_RECENT: process.env.NEXT_PUBLIC_WALINE_RECENT || false, // 最新评论
+  COMMENT_WALINE_SERVER_URL: process.env.NEXT_PUBLIC_WALINE_SERVER_URL || '', // è¯·éç½®å®æ´çWalineè¯è®ºå°å ä¾å¦ hhttps://preview-waline.tangly1024.com @see https://waline.js.org/guide/get-started.html
+  COMMENT_WALINE_RECENT: process.env.NEXT_PUBLIC_WALINE_RECENT || false, // ææ°è¯è®º
 
-  // 此评论系统基于WebMention，细节可参考https://webmention.io
-  // 它是一个基于IndieWeb理念的开放式评论系统，下方COMMENT_WEBMENTION包含的属性皆需配置：
-  // ENABLE: 是否开启
-  // AUTH: Webmention使用的IndieLogin，可使用Twitter或Github个人页面连结
-  // HOSTNAME: Webmention绑定之网域，通常即为本站网址
-  // TWITTER_USERNAME: 评论显示区域需要的资讯
-  // TOKEN: Webmention的API token
+  // æ­¤è¯è®ºç³»ç»åºäºWebMentionï¼ç»èå¯åèhttps://webmention.io
+  // å®æ¯ä¸ä¸ªåºäºIndieWebçå¿µçå¼æ¾å¼è¯è®ºç³»ç»ï¼ä¸æ¹COMMENT_WEBMENTIONåå«çå±æ§çééç½®ï¼
+  // ENABLE: æ¯å¦å¼å¯
+  // AUTH: Webmentionä½¿ç¨çIndieLoginï¼å¯ä½¿ç¨TwitteræGithubä¸ªäººé¡µé¢è¿ç»
+  // HOSTNAME: Webmentionç»å®ä¹ç½åï¼éå¸¸å³ä¸ºæ¬ç«ç½å
+  // TWITTER_USERNAME: è¯è®ºæ¾ç¤ºåºåéè¦çèµè®¯
+  // TOKEN: WebmentionçAPI token
   COMMENT_WEBMENTION_ENABLE: process.env.NEXT_PUBLIC_WEBMENTION_ENABLE || false,
   COMMENT_WEBMENTION_AUTH: process.env.NEXT_PUBLIC_WEBMENTION_AUTH || '',
   COMMENT_WEBMENTION_HOSTNAME: process.env.NEXT_PUBLIC_WEBMENTION_HOSTNAME || '',
   COMMENT_WEBMENTION_TWITTER_USERNAME: process.env.NEXT_PUBLIC_TWITTER_USERNAME || '',
   COMMENT_WEBMENTION_TOKEN: process.env.NEXT_PUBLIC_WEBMENTION_TOKEN || '',
 
-  // <---- 评论插件
+  // <---- è¯è®ºæä»¶
 
-  // ----> 站点统计
-  ANALYTICS_VERCEL: process.env.NEXT_PUBLIC_ANALYTICS_VERCEL || false, // vercel自带的统计 https://vercel.com/docs/concepts/analytics/quickstart https://github.com/tangly1024/NotionNext/issues/897
-  // ANALYTICS_BUSUANZI_ENABLE: process.env.NEXT_PUBLIC_ANALYTICS_BUSUANZI_ENABLE || false, // 展示网站阅读量、访问数 see http://busuanzi.ibruce.info/
-  // ANALYTICS_BAIDU_ID: process.env.NEXT_PUBLIC_ANALYTICS_BAIDU_ID || '', // e.g 只需要填写百度统计的id，[baidu_id] -> https://hm.baidu.com/hm.js?[baidu_id]
-  // ANALYTICS_CNZZ_ID: process.env.NEXT_PUBLIC_ANALYTICS_CNZZ_ID || '', // 只需要填写站长统计的id, [cnzz_id] -> https://s9.cnzz.com/z_stat.php?id=[cnzz_id]&web_id=[cnzz_id]
-  // ANALYTICS_GOOGLE_ID: process.env.NEXT_PUBLIC_ANALYTICS_GOOGLE_ID || '', // 谷歌Analytics的id e.g: G-XXXXXXXXXX
+  // ----> ç«ç¹ç»è®¡
+  ANALYTICS_VERCEL: process.env.NEXT_PUBLIC_ANALYTICS_VERCEL || false, // vercelèªå¸¦çç»è®¡ https://vercel.com/docs/concepts/analytics/quickstart https://github.com/tangly1024/NotionNext/issues/897
+  // ANALYTICS_BUSUANZI_ENABLE: process.env.NEXT_PUBLIC_ANALYTICS_BUSUANZI_ENABLE || false, // å±ç¤ºç½ç«éè¯»éãè®¿é®æ° see http://busuanzi.ibruce.info/
+  // ANALYTICS_BAIDU_ID: process.env.NEXT_PUBLIC_ANALYTICS_BAIDU_ID || '', // e.g åªéè¦å¡«åç¾åº¦ç»è®¡çidï¼[baidu_id] -> https://hm.baidu.com/hm.js?[baidu_id]
+  // ANALYTICS_CNZZ_ID: process.env.NEXT_PUBLIC_ANALYTICS_CNZZ_ID || '', // åªéè¦å¡«åç«é¿ç»è®¡çid, [cnzz_id] -> https://s9.cnzz.com/z_stat.php?id=[cnzz_id]&web_id=[cnzz_id]
+  // ANALYTICS_GOOGLE_ID: process.env.NEXT_PUBLIC_ANALYTICS_GOOGLE_ID || '', // è°·æ­Analyticsçid e.g: G-XXXXXXXXXX
 
-  // Matomo 网站统计
-  MATOMO_HOST_URL: process.env.NEXT_PUBLIC_MATOMO_HOST_URL || '', // Matomo服务器地址，不带斜杠
-  MATOMO_SITE_ID: process.env.NEXT_PUBLIC_MATOMO_SITE_ID || '', // Matomo网站ID
-  // ACKEE网站访客统计工具
+  // Matomo ç½ç«ç»è®¡
+  MATOMO_HOST_URL: process.env.NEXT_PUBLIC_MATOMO_HOST_URL || '', // Matomoæå¡å¨å°åï¼ä¸å¸¦ææ 
+  MATOMO_SITE_ID: process.env.NEXT_PUBLIC_MATOMO_SITE_ID || '', // Matomoç½ç«ID
+  // ACKEEç½ç«è®¿å®¢ç»è®¡å·¥å·
   ANALYTICS_ACKEE_TRACKER: process.env.NEXT_PUBLIC_ANALYTICS_ACKEE_TRACKER || '', // e.g 'https://ackee.tangly1024.com/tracker.js'
   ANALYTICS_ACKEE_DATA_SERVER: process.env.NEXT_PUBLIC_ANALYTICS_ACKEE_DATA_SERVER || '', // e.g https://ackee.tangly1024.com , don't end with a slash
   ANALYTICS_ACKEE_DOMAIN_ID: process.env.NEXT_PUBLIC_ANALYTICS_ACKEE_DOMAIN_ID || '', // e.g '82e51db6-dec2-423a-b7c9-b4ff7ebb3302'
@@ -340,41 +338,41 @@ const BLOG = {
   SEO_BAIDU_SITE_VERIFICATION:
         process.env.NEXT_PUBLIC_SEO_BAIDU_SITE_VERIFICATION || '', // Remove the value or replace it with your own google site verification code
 
-  // <---- 站点统计
+  // <---- ç«ç¹ç»è®¡
 
-  // START---->营收相关
+  // START---->è¥æ¶ç¸å³
 
-  // 谷歌广告
-  ADSENSE_GOOGLE_ID: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_ID || '', // 谷歌广告ID e.g ca-pub-xxxxxxxxxxxxxxxx
-  ADSENSE_GOOGLE_TEST: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_TEST || false, // 谷歌广告ID测试模式，这种模式获取假的测试广告，用于开发 https://www.tangly1024.com/article/local-dev-google-adsense
-  ADSENSE_GOOGLE_SLOT_IN_ARTICLE: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_SLOT_IN_ARTICLE || '', // Google AdScene>广告>按单元广告>新建文章内嵌广告 粘贴html代码中的data-ad-slot值
-  ADSENSE_GOOGLE_SLOT_FLOW: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_SLOT_FLOW || '', // Google AdScene>广告>按单元广告>新建信息流广告
-  ADSENSE_GOOGLE_SLOT_NATIVE: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_SLOT_NATIVE || '', // Google AdScene>广告>按单元广告>新建原生广告
-  ADSENSE_GOOGLE_SLOT_AUTO: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_SLOT_AUTO || '', // Google AdScene>广告>按单元广告>新建展示广告 （自动广告）
+  // è°·æ­å¹¿å
+  ADSENSE_GOOGLE_ID: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_ID || '', // è°·æ­å¹¿åID e.g ca-pub-xxxxxxxxxxxxxxxx
+  ADSENSE_GOOGLE_TEST: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_TEST || false, // è°·æ­å¹¿åIDæµè¯æ¨¡å¼ï¼è¿ç§æ¨¡å¼è·ååçæµè¯å¹¿åï¼ç¨äºå¼å https://www.tangly1024.com/article/local-dev-google-adsense
+  ADSENSE_GOOGLE_SLOT_IN_ARTICLE: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_SLOT_IN_ARTICLE || '', // Google AdScene>å¹¿å>æååå¹¿å>æ°å»ºæç« ååµå¹¿å ç²è´´htmlä»£ç ä¸­çdata-ad-slotå¼
+  ADSENSE_GOOGLE_SLOT_FLOW: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_SLOT_FLOW || '', // Google AdScene>å¹¿å>æååå¹¿å>æ°å»ºä¿¡æ¯æµå¹¿å
+  ADSENSE_GOOGLE_SLOT_NATIVE: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_SLOT_NATIVE || '', // Google AdScene>å¹¿å>æååå¹¿å>æ°å»ºåçå¹¿å
+  ADSENSE_GOOGLE_SLOT_AUTO: process.env.NEXT_PUBLIC_ADSENSE_GOOGLE_SLOT_AUTO || '', // Google AdScene>å¹¿å>æååå¹¿å>æ°å»ºå±ç¤ºå¹¿å ï¼èªå¨å¹¿åï¼
 
-  // 万维广告
-  AD_WWADS_ID: process.env.NEXT_PUBLIC_WWAD_ID || null, // https://wwads.cn/ 创建您的万维广告单元ID
-  AD_WWADS_BLOCK_DETECT: process.env.NEXT_PUBLIC_WWADS_AD_BLOCK_DETECT || false, // 是否开启WWADS广告屏蔽插件检测,开启后会在广告位上以文字提示 @see https://github.com/bytegravity/whitelist-wwads
+  // ä¸ç»´å¹¿å
+  AD_WWADS_ID: process.env.NEXT_PUBLIC_WWAD_ID || null, // https://wwads.cn/ åå»ºæ¨çä¸ç»´å¹¿åååID
+  AD_WWADS_BLOCK_DETECT: process.env.NEXT_PUBLIC_WWADS_AD_BLOCK_DETECT || false, // æ¯å¦å¼å¯WWADSå¹¿åå±è½æä»¶æ£æµ,å¼å¯åä¼å¨å¹¿åä½ä¸ä»¥æå­æç¤º @see https://github.com/bytegravity/whitelist-wwads
 
-  // END<----营收相关
+  // END<----è¥æ¶ç¸å³
 
-  // 自定义配置notion数据库字段名
+  // èªå®ä¹éç½®notionæ°æ®åºå­æ®µå
   NOTION_PROPERTY_NAME: {
     password: process.env.NEXT_PUBLIC_NOTION_PROPERTY_PASSWORD || 'password',
-    type: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE || 'type', // 文章类型，
-    type_post: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_POST || 'Post', // 当type文章类型与此值相同时，为博文。
-    type_page: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_PAGE || 'Page', // 当type文章类型与此值相同时，为单页。
+    type: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE || 'type', // æç« ç±»åï¼
+    type_post: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_POST || 'Post', // å½typeæç« ç±»åä¸æ­¤å¼ç¸åæ¶ï¼ä¸ºåæã
+    type_page: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_PAGE || 'Page', // å½typeæç« ç±»åä¸æ­¤å¼ç¸åæ¶ï¼ä¸ºåé¡µã
     type_notice:
-          process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_NOTICE || 'Notice', // 当type文章类型与此值相同时，为公告。
-    type_menu: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_MENU || 'Menu', // 当type文章类型与此值相同时，为菜单。
+          process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_NOTICE || 'Notice', // å½typeæç« ç±»åä¸æ­¤å¼ç¸åæ¶ï¼ä¸ºå¬åã
+    type_menu: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_MENU || 'Menu', // å½typeæç« ç±»åä¸æ­¤å¼ç¸åæ¶ï¼ä¸ºèåã
     type_sub_menu:
-          process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_SUB_MENU || 'SubMenu', // 当type文章类型与此值相同时，为子菜单。
-    title: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TITLE || 'title', // 文章标题
+          process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_SUB_MENU || 'SubMenu', // å½typeæç« ç±»åä¸æ­¤å¼ç¸åæ¶ï¼ä¸ºå­èåã
+    title: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TITLE || 'title', // æç« æ é¢
     status: process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS || 'status',
     status_publish:
-          process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS_PUBLISH || 'Published', // 当status状态值与此相同时为发布，可以为中文
+          process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS_PUBLISH || 'Published', // å½statusç¶æå¼ä¸æ­¤ç¸åæ¶ä¸ºåå¸ï¼å¯ä»¥ä¸ºä¸­æ
     status_invisible:
-          process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS_INVISIBLE || 'Invisible', // 当status状态值与此相同时为隐藏发布，可以为中文 ， 除此之外其他页面状态不会显示在博客上
+          process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS_INVISIBLE || 'Invisible', // å½statusç¶æå¼ä¸æ­¤ç¸åæ¶ä¸ºéèåå¸ï¼å¯ä»¥ä¸ºä¸­æ ï¼ é¤æ­¤ä¹å¤å¶ä»é¡µé¢ç¶æä¸ä¼æ¾ç¤ºå¨åå®¢ä¸
     summary: process.env.NEXT_PUBLIC_NOTION_PROPERTY_SUMMARY || 'summary',
     slug: process.env.NEXT_PUBLIC_NOTION_PROPERTY_SLUG || 'slug',
     category: process.env.NEXT_PUBLIC_NOTION_PROPERTY_CATEGORY || 'category',
@@ -383,30 +381,31 @@ const BLOG = {
     icon: process.env.NEXT_PUBLIC_NOTION_PROPERTY_ICON || 'icon'
   },
 
-  // RSS订阅
-  ENABLE_RSS: process.env.NEXT_PUBLIC_ENABLE_RSS || true, // 是否开启RSS订阅功能
-  MAILCHIMP_LIST_ID: process.env.MAILCHIMP_LIST_ID || null, // 开启mailichimp邮件订阅 客户列表ID ，具体使用方法参阅文档
-  MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY || null, // 开启mailichimp邮件订阅 APIkey
+  // RSSè®¢é
+  ENABLE_RSS: process.env.NEXT_PUBLIC_ENABLE_RSS || true, // æ¯å¦å¼å¯RSSè®¢éåè½
+  MAILCHIMP_LIST_ID: process.env.MAILCHIMP_LIST_ID || null, // å¼å¯mailichimpé®ä»¶è®¢é å®¢æ·åè¡¨ID ï¼å·ä½ä½¿ç¨æ¹æ³åéææ¡£
+  MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY || null, // å¼å¯mailichimpé®ä»¶è®¢é APIkey
 
-  // 作废配置
-  AVATAR: process.env.NEXT_PUBLIC_AVATAR || '/avatar.svg', // 作者头像，被notion中的ICON覆盖。若无ICON则取public目录下的avatar.png
-  TITLE: process.env.NEXT_PUBLIC_TITLE || 'ennuigo_', // 站点标题 ，被notion中的页面标题覆盖；此处请勿留空白，否则服务器无法编译
+  // ä½åºéç½®
+  AVATAR: process.env.NEXT_PUBLIC_AVATAR || '/avatar.svg', // ä½èå¤´åï¼è¢«notionä¸­çICONè¦çãè¥æ ICONååpublicç®å½ä¸çavatar.png
+  TITLE: process.env.NEXT_PUBLIC_TITLE || 'ennuigo_', // ç«ç¹æ é¢ ï¼è¢«notionä¸­çé¡µé¢æ é¢è¦çï¼æ­¤å¤è¯·å¿çç©ºç½ï¼å¦åæå¡å¨æ æ³ç¼è¯
   HOME_BANNER_IMAGE:
-        process.env.NEXT_PUBLIC_HOME_BANNER_IMAGE || '/bg_image.jpg', // 首页背景大图, 会被notion中的封面图覆盖，若无封面图则会使用代码中的 /public/bg_image.jpg 文件
+        process.env.NEXT_PUBLIC_HOME_BANNER_IMAGE || '/bg_image.jpg', // é¦é¡µèæ¯å¤§å¾, ä¼è¢«notionä¸­çå°é¢å¾è¦çï¼è¥æ å°é¢å¾åä¼ä½¿ç¨ä»£ç ä¸­ç /public/bg_image.jpg æä»¶
   DESCRIPTION:
-        process.env.NEXT_PUBLIC_DESCRIPTION || 'ennuigo_', // 站点描述，被notion中的页面描述覆盖
+        process.env.NEXT_PUBLIC_DESCRIPTION || 'ennuigo_', // ç«ç¹æè¿°ï¼è¢«notionä¸­çé¡µé¢æè¿°è¦ç
 
-  // 网站图片
-  IMG_LAZY_LOAD_PLACEHOLDER: process.env.NEXT_PUBLIC_IMG_LAZY_LOAD_PLACEHOLDER || 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', // 懒加载占位图片地址，支持base64或url
-  IMG_URL_TYPE: process.env.NEXT_PUBLIC_IMG_TYPE || 'Notion', // 此配置已失效，请勿使用；AMAZON方案不再支持，仅支持Notion方案。 ['Notion','AMAZON'] 站点图片前缀 默认 Notion:(https://notion.so/images/xx) ， AMAZON(https://s3.us-west-2.amazonaws.com/xxx)
-  IMG_SHADOW: process.env.NEXT_PUBLIC_IMG_SHADOW || false, // 文章图片是否自动添加阴影
+  // ç½ç«å¾ç
+  IMG_LAZY_LOAD_PLACEHOLDER: process.env.NEXT_PUBLIC_IMG_LAZY_LOAD_PLACEHOLDER || 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', // æå è½½å ä½å¾çå°åï¼æ¯æbase64æurl
+  IMG_URL_TYPE: process.env.NEXT_PUBLIC_IMG_TYPE || 'Notion', // æ­¤éç½®å·²å¤±æï¼è¯·å¿ä½¿ç¨ï¼AMAZONæ¹æ¡ä¸åæ¯æï¼ä»æ¯æNotionæ¹æ¡ã ['Notion','AMAZON'] ç«ç¹å¾çåç¼ é»è®¤ Notion:(https://notion.so/images/xx) ï¼ AMAZON(https://s3.us-west-2.amazonaws.com/xxx)
+  IMG_SHADOW: process.env.NEXT_PUBLIC_IMG_SHADOW || false, // æç« å¾çæ¯å¦èªå¨æ·»å é´å½±
 
-  // 开发相关
+  // å¼åç¸å³
   NOTION_ACCESS_TOKEN: process.env.NOTION_ACCESS_TOKEN || '', // Useful if you prefer not to make your database public
-  DEBUG: process.env.NEXT_PUBLIC_DEBUG || false, // 是否显示调试按钮
-  ENABLE_CACHE: process.env.ENABLE_CACHE || process.env.npm_lifecycle_event === 'build', // 缓存在开发调试和打包过程中选择性开启，正式部署开启此功能意义不大。
+  DEBUG: process.env.NEXT_PUBLIC_DEBUG || false, // æ¯å¦æ¾ç¤ºè°è¯æé®
+  ENABLE_CACHE: process.env.ENABLE_CACHE || process.env.npm_lifecycle_event === 'build', // ç¼å­å¨å¼åè°è¯åæåè¿ç¨ä¸­éæ©æ§å¼å¯ï¼æ­£å¼é¨ç½²å¼å¯æ­¤åè½æä¹ä¸å¤§ã
   isProd: process.env.VERCEL_ENV === 'production', // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)  isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
-  VERSION: process.env.NEXT_PUBLIC_VERSION // 版本号
+  VERSION: process.env.NEXT_PUBLIC_VERSION // çæ¬å·
 }
 
 module.exports = BLOG
+
