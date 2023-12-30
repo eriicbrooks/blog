@@ -10,8 +10,8 @@ const CONFIG = {
   SIMPLE_POST_AD_ENABLE: process.env.NEXT_PUBLIC_SIMPLE_POST_AD_ENABLE || false, // 文章列表是否插入广告
 
   // 菜单配置
-  SIMPLE_MENU_CATEGORY: true, // 显示分类
-  SIMPLE_MENU_TAG: true, // 显示标签
+  SIMPLE_MENU_CATEGORY: false, // 显示分类
+  SIMPLE_MENU_TAG: false, // 显示标签
   SIMPLE_MENU_ARCHIVE: true, // 显示归档
   SIMPLE_MENU_SEARCH: true // 显示搜索
 }
