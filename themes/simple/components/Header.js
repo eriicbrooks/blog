@@ -18,13 +18,13 @@ export const Header = (props) => {
                 <Link href='/'>
                     {}
                     <div className='flex space-x-6'>
-                         <div className='hover:rotate-0 hover:scale-100 transform duration-200 cursor-pointer'>
+                         <div className='hover:rotate-0 hover:scale-100 transform duration-100 cursor-pointer'>
                             <LazyImage src={avatar} className='rounded-full' width={130} height={130} alt={siteConfig('AUTHOR')} />
                         </div>
 
                         <div className='flex-col flex justify-center'>
-                            <div className='text-2xl font-serif dark:text-white py-2 hover:scale-105 transform duration-100'>{siteConfig('AUTHOR')}</div>
-                            <div className='font-light dark:text-white py-2 hover:scale-105 transform duration-100 text-center' dangerouslySetInnerHTML={{ __html: siteConfig('SIMPLE_LOGO_DESCRIPTION', null, CONFIG) }} />
+                            <div className='text-2xl font-serif dark:text-white py-2 hover:scale-100 transform duration-100'>{siteConfig('AUTHOR')}</div>
+                            <div className='font-light dark:text-white py-2 hover:scale-100 transform duration-100 text-center' dangerouslySetInnerHTML={{ __html: siteConfig('SIMPLE_LOGO_DESCRIPTION', null, CONFIG) }} />
                         </div>
                     </div>
                 </Link>
