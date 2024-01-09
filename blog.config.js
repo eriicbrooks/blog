@@ -96,7 +96,7 @@ const BLOG = {
   CUSTOM_EXTERNAL_CSS: [''], // e.g. ['http://xx.com/style.css','http://xx.com/style.css']
 
   // ä¾§æ å¸å± æ¯å¦åè½¬(å·¦åå³,å³åå·¦) å·²æ¯æä¸»é¢: hexo next medium fukasawa example
-  LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || true,
+  LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || false,
 
   // ä¸ä¸ªå°æä»¶å±ç¤ºä½ çfacebook fan page~ @see https://tw.andys.pro/article/add-facebook-fanpage-notionnext
   FACEBOOK_PAGE_TITLE: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_TITLE || null, // éæ¬ Facebook Page widget çæ¨é¡æ¬ï¼å¡«''åç¡æ¨é¡æ¬ e.g FACEBOOK ç²çµ²å'
