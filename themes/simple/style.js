@@ -5,7 +5,7 @@
  * @returns
  */
 const Style = () => {
-  return <style jsx global>{
+  return <style jsx global>{`
     
   // 底色
   .dark body{
@@ -54,7 +54,7 @@ const Style = () => {
   
   
 
-  }</style>
+  `}</style>
 }
 
 export { Style }
