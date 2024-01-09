@@ -13,7 +13,7 @@ const BLOG = {
   // 3.14.1çæ¬åï¼æ¬¢è¿è¯­å¨æ­¤éç½®ï¼è±æéå·éå¼ ,  å³å¯æ¯æå¤ä¸ªæ¬¢è¿è¯­æå­ææãä¸ä¸ªæ®éçå¹²é¥­äººð
   GREETING_WORDS: process.env.NEXT_PUBLIC_GREETING_WORDS || 'hello',
 
-  CUSTOM_MENU: process.env.NEXT_PUBLIC_CUSTOM_MENU || false, // æ¯æMenu ç±»åï¼ä»3.12.0çæ¬èµ·ï¼åä¸»é¢å°éæ­¥æ¯æçµæ´»çäºçº§èåéç½®ï¼æ¿ä»£äºåæ¥çPageç±»åï¼æ­¤éç½®æ¯è¯éªåè½ãé»è®¤å³é­ã
+  CUSTOM_MENU: process.env.NEXT_PUBLIC_CUSTOM_MENU || true, 
 
   AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || 'eric b.', // æ¨çæµç§° ä¾å¦ tangly1024
   BIO: process.env.NEXT_PUBLIC_BIO || '""', // ä½èç®ä»
@@ -96,7 +96,7 @@ const BLOG = {
   CUSTOM_EXTERNAL_CSS: [''], // e.g. ['http://xx.com/style.css','http://xx.com/style.css']
 
   // ä¾§æ å¸å± æ¯å¦åè½¬(å·¦åå³,å³åå·¦) å·²æ¯æä¸»é¢: hexo next medium fukasawa example
-  LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || false,
+  LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || true,
 
   // ä¸ä¸ªå°æä»¶å±ç¤ºä½ çfacebook fan page~ @see https://tw.andys.pro/article/add-facebook-fanpage-notionnext
   FACEBOOK_PAGE_TITLE: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_TITLE || null, // éæ¬ Facebook Page widget çæ¨é¡æ¬ï¼å¡«''åç¡æ¨é¡æ¬ e.g FACEBOOK ç²çµ²å'
