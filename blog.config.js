@@ -3,8 +3,8 @@ const BLOG = {
         process.env.NOTION_PAGE_ID || '4574642305a949c38a8195c5eca6a666',
   PSEUDO_STATIC: process.env.NEXT_PUBLIC_PSEUDO_STATIC || false, // ä¼ªéæè·¯å¾ï¼å¼å¯åæææç« URLé½ä»¥ .html ç»å°¾ã
   NEXT_REVALIDATE_SECOND: process.env.NEXT_PUBLIC_REVALIDATE_SECOND || 5, // æ´æ°åå®¹ç¼å­é´é åä½(ç§)ï¼å³æ¯ä¸ªé¡µé¢æ5ç§ççº¯éææãæ­¤æé´æ è®ºå¤å°æ¬¡è®¿é®é½ä¸ä¼æånotionæ°æ®ï¼è°å¤§è¯¥å¼æå©äºèçVercelèµæºãåæ¶æåè®¿é®éçï¼ä½ä¹ä¼ä½¿æç« æ´æ°æå»¶è¿ã
-  THEME: process.env.NEXT_PUBLIC_THEME || 'next', // å½åä¸»é¢ï¼å¨themesæä»¶å¤¹ä¸å¯æ¾å°æææ¯æçä¸»é¢ï¼ä¸»é¢åç§°å°±æ¯æä»¶å¤¹åï¼ä¾å¦ example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
-  THEME_SWITCH: process.env.NEXT_PUBLIC_THEME_SWITCH || true, // æ¯å¦æ¾ç¤ºåæ¢ä¸»é¢æé®
+  THEME: process.env.NEXT_PUBLIC_THEME || 'next', // example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
+  THEME_SWITCH: process.env.NEXT_PUBLIC_THEME_SWITCH || false, // true or false
   LANG: process.env.NEXT_PUBLIC_LANG || 'en-US', // e.g 'zh-CN','en-US'  see /lib/lang.js for more.
   SINCE: process.env.NEXT_SINCE || 2023, // e.g if leave this empty, current year will be used.
   APPEARANCE: process.env.NEXT_PUBLIC_APPEARANCE || 'auto', // ['light', 'dark', 'auto'], // light æ¥é´æ¨¡å¼ ï¼ darkå¤é´æ¨¡å¼ï¼ autoæ ¹æ®æ¶é´åä¸»é¢èªå¨å¤é´æ¨¡å¼
@@ -48,11 +48,13 @@ const BLOG = {
     // 'https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css',
     'https://fonts.googleapis.com/css?family=Inter&display=swap',
     'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap',
-    'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&display=swap'
+    'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&display=swap',
+    'http://fonts.googleapis.com/css?family=Poppins&display=swap'
   ],
   // æ è¡¬çº¿å­ä½ ä¾å¦'"LXGW WenKai"'
   FONT_SANS: [
     // '"LXGW WenKai"',
+    'Poppins',
     'Inter',
     'Helvetica',
     '"PingFang SC"',
@@ -96,7 +98,7 @@ const BLOG = {
   CUSTOM_EXTERNAL_CSS: [''], // e.g. ['http://xx.com/style.css','http://xx.com/style.css']
 
   // ä¾§æ å¸å± æ¯å¦åè½¬(å·¦åå³,å³åå·¦) å·²æ¯æä¸»é¢: hexo next medium fukasawa example
-  LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || true,
+  LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || false,
 
   // ä¸ä¸ªå°æä»¶å±ç¤ºä½ çfacebook fan page~ @see https://tw.andys.pro/article/add-facebook-fanpage-notionnext
   FACEBOOK_PAGE_TITLE: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_TITLE || null, // éæ¬ Facebook Page widget çæ¨é¡æ¬ï¼å¡«''åç¡æ¨é¡æ¬ e.g FACEBOOK ç²çµ²å'
