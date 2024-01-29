@@ -16,7 +16,7 @@ const BLOG = {
   CUSTOM_MENU: process.env.NEXT_PUBLIC_CUSTOM_MENU || true, 
 
   AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || 'eric b.', // æ¨çæµç§° ä¾å¦ tangly1024
-  BIO: process.env.NEXT_PUBLIC_BIO || '""', // ä½èç®ä»
+  BIO: process.env.NEXT_PUBLIC_BIO || '', // ä½èç®ä»
   LINK: process.env.NEXT_PUBLIC_LINK || 'https://ericbrooks.io', // ç½ç«å°å
   KEYWORDS: process.env.NEXT_PUBLIC_KEYWORD || 'Notion, Blog', // ç½ç«å³é®è¯ è±æéå·éå¼
 
@@ -54,8 +54,8 @@ const BLOG = {
   // æ è¡¬çº¿å­ä½ ä¾å¦'"LXGW WenKai"'
   FONT_SANS: [
     // '"LXGW WenKai"',
-    'Poppins',
     'Inter',
+    'Poppins',
     'Helvetica',
     '"PingFang SC"',
     '-apple-system',
