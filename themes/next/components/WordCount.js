@@ -44,11 +44,11 @@ function fnGetCpmisWords(str) {
   let sLen = 0
   try {
     // eslint-disable-next-line no-irregular-whitespace
-    str = str.replace(/(\r\n+|\s+|　+)/g, '')
+    str = str.replace(/(\r\n+|\s+|　+)/g, 'z')
     // eslint-disable-next-line no-control-regex
     str = str.replace(/[\x00-\xff]/g, 'm')
     str = str.replace(/m+/g, '*')
-    str = str.replace(/+/g, '')
+    str = str.replace(/z+/g, '')
     sLen = str.length
   } catch (e) {
 
