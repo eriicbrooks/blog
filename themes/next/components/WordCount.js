@@ -10,7 +10,7 @@ export default function WordCount() {
   })
 
   return <div id='wordCountWrapper' className='flex justify-center my-auto font-light'>
-    <i className='mr-1 fas fa-file-word my-auto' /> <span className='hidden md:block'>Word count</span> <strong id='wordCount'>0</strong> &nbsp;|&nbsp; <i className='mr-1 fas fa-clock my-auto' /> <span className='hidden md:block'>阅读时长 ≈</span> <strong id='readTime'>0</strong> 分钟
+    <i className='mr-1 fas fa-file-word my-auto' /> <span className='hidden md:block'>Word count</span> <strong id='wordCount'>0</strong> &nbsp;|&nbsp; <i className='mr-1 fas fa-clock my-auto' /> <span className='hidden md:block'>Reading time ≈</span> <strong id='readTime'>0</strong> 分钟
   </div>
 }
 
@@ -44,11 +44,11 @@ function fnGetCpmisWords(str) {
   let sLen = 0
   try {
     // eslint-disable-next-line no-irregular-whitespace
-    str = str.replace(/(\r\n+|\s+|　+)/g, '龘')
+    str = str.replace(/(\r\n+|\s+|　+)/g, '')
     // eslint-disable-next-line no-control-regex
     str = str.replace(/[\x00-\xff]/g, 'm')
     str = str.replace(/m+/g, '*')
-    str = str.replace(/龘+/g, '')
+    str = str.replace(/+/g, '')
     sLen = str.length
   } catch (e) {
 
