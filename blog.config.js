@@ -4,7 +4,7 @@ const BLOG = {
   PSEUDO_STATIC: process.env.NEXT_PUBLIC_PSEUDO_STATIC || false, // ä¼ªéæè·¯å¾ï¼å¼å¯åæææç« URLé½ä»¥ .html ç»å°¾ã
   NEXT_REVALIDATE_SECOND: process.env.NEXT_PUBLIC_REVALIDATE_SECOND || 5, // æ´æ°åå®¹ç¼å­é´é åä½(ç§)ï¼å³æ¯ä¸ªé¡µé¢æ5ç§ççº¯éææãæ­¤æé´æ è®ºå¤å°æ¬¡è®¿é®é½ä¸ä¼æånotionæ°æ®ï¼è°å¤§è¯¥å¼æå©äºèçVercelèµæºãåæ¶æåè®¿é®éçï¼ä½ä¹ä¼ä½¿æç« æ´æ°æå»¶è¿ã
   THEME: process.env.NEXT_PUBLIC_THEME || 'next', // example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
-  THEME_SWITCH: process.env.NEXT_PUBLIC_THEME_SWITCH || false, // true or false
+  THEME_SWITCH: process.env.NEXT_PUBLIC_THEME_SWITCH || true, // true or false
   LANG: process.env.NEXT_PUBLIC_LANG || 'en-US', // e.g 'zh-CN','en-US'  see /lib/lang.js for more.
   SINCE: process.env.NEXT_SINCE || 2023, // e.g if leave this empty, current year will be used.
   APPEARANCE: process.env.NEXT_PUBLIC_APPEARANCE || 'auto', // ['light', 'dark', 'auto'], // light æ¥é´æ¨¡å¼ ï¼ darkå¤é´æ¨¡å¼ï¼ autoæ ¹æ®æ¶é´åä¸»é¢èªå¨å¤é´æ¨¡å¼
