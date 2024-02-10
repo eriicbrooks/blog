@@ -55,6 +55,7 @@ const BLOG = {
   FONT_SANS: [
     // '"LXGW WenKai"',
     // 'Inter',
+    'Nunito',
     'Poppins',
     'Helvetica',
     '"PingFang SC"',
