@@ -55,7 +55,7 @@ const BLOG = {
   FONT_SANS: [
     // '"LXGW WenKai"',
     // 'Inter',
-    'Nunito',
+    // 'Nunito',
     'Poppins',
     'Helvetica',
     '"PingFang SC"',
@@ -99,7 +99,7 @@ const BLOG = {
   CUSTOM_EXTERNAL_CSS: [''], // e.g. ['http://xx.com/style.css','http://xx.com/style.css']
 
   // ä¾§æ å¸å± æ¯å¦åè½¬(å·¦åå³,å³åå·¦) å·²æ¯æä¸»é¢: hexo next medium fukasawa example
-  LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || false,
+  LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || true,
 
   // ä¸ä¸ªå°æä»¶å±ç¤ºä½ çfacebook fan page~ @see https://tw.andys.pro/article/add-facebook-fanpage-notionnext
   FACEBOOK_PAGE_TITLE: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_TITLE || null, // éæ¬ Facebook Page widget çæ¨é¡æ¬ï¼å¡«''åç¡æ¨é¡æ¬ e.g FACEBOOK ç²çµ²å'
@@ -146,12 +146,12 @@ const BLOG = {
   // æ¯æ´é¡ä¼¼ WP å¯èªè¨æç« é£çµæ ¼å¼çåè½ï¼https://wordpress.org/documentation/article/customize-permalinks/ï¼ç®ååªåå¯¦ä½ %year%/%month%/%day%
   // ä¾ï¼å¦æ³é£çµæ¹æåç¶´ article + æéæ³è¨ï¼å¯è®æ´çºï¼ 'article/%year%/%month%/%day%'
 
-  POST_LIST_STYLE: process.env.NEXT_PUBLIC_POST_LIST_STYLE || 'page', // ['page','scroll] æç« åè¡¨æ ·å¼:é¡µç åé¡µãåé¡µæ»å¨å è½½
+  POST_LIST_STYLE: process.env.NEXT_PUBLIC_POST_LIST_STYLE || 'scroll', // ['page','scroll] æç« åè¡¨æ ·å¼:é¡µç åé¡µãåé¡µæ»å¨å è½½
   POST_LIST_PREVIEW: process.env.NEXT_PUBLIC_POST_PREVIEW || 'false', //  æ¯å¦å¨åè¡¨å è½½æç« é¢è§
-  POST_PREVIEW_LINES: 6, // é¢è§åå®¢è¡æ°
-  POST_RECOMMEND_COUNT: 2, // æ¨èæç« æ°é
+  POST_PREVIEW_LINES: 3, // é¢è§åå®¢è¡æ°
+  POST_RECOMMEND_COUNT: 3, // æ¨èæç« æ°é
   POSTS_PER_PAGE: 4, // post counts per page
-  POSTS_SORT_BY: process.env.NEXT_PUBLIC_POST_SORT_BY || 'date', // æåºæ¹å¼ 'date'ææ¶é´,'notion'ç±notionæ§å¶
+  POSTS_SORT_BY: process.env.NEXT_PUBLIC_POST_SORT_BY || 'notion', // æåºæ¹å¼ 'date'ææ¶é´,'notion'ç±notionæ§å¶
 
   ALGOLIA_APP_ID: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || null, // å¨è¿éæ¥ç https://dashboard.algolia.com/account/api-keys/
   ALGOLIA_ADMIN_APP_KEY: process.env.ALGOLIA_ADMIN_APP_KEY || null, // ç®¡çåå°çKEYï¼ä¸è¦æ´é²å¨ä»£ç ä¸­ï¼å¨è¿éæ¥ç https://dashboard.algolia.com/account/api-keys/
@@ -391,11 +391,11 @@ const BLOG = {
 
   // ä½åºéç½®
   AVATAR: process.env.NEXT_PUBLIC_AVATAR || '/avatar.svg', // ä½èå¤´åï¼è¢«notionä¸­çICONè¦çãè¥æ ICONååpublicç®å½ä¸çavatar.png
-  TITLE: process.env.NEXT_PUBLIC_TITLE || 'ennuigo_', // ç«ç¹æ é¢ ï¼è¢«notionä¸­çé¡µé¢æ é¢è¦çï¼æ­¤å¤è¯·å¿çç©ºç½ï¼å¦åæå¡å¨æ æ³ç¼è¯
+  TITLE: process.env.NEXT_PUBLIC_TITLE || 'ericbrooks.io', // ç«ç¹æ é¢ ï¼è¢«notionä¸­çé¡µé¢æ é¢è¦çï¼æ­¤å¤è¯·å¿çç©ºç½ï¼å¦åæå¡å¨æ æ³ç¼è¯
   HOME_BANNER_IMAGE:
         process.env.NEXT_PUBLIC_HOME_BANNER_IMAGE || '/bg_image.jpg', // é¦é¡µèæ¯å¤§å¾, ä¼è¢«notionä¸­çå°é¢å¾è¦çï¼è¥æ å°é¢å¾åä¼ä½¿ç¨ä»£ç ä¸­ç /public/bg_image.jpg æä»¶
   DESCRIPTION:
-        process.env.NEXT_PUBLIC_DESCRIPTION || 'ennuigo_', // ç«ç¹æè¿°ï¼è¢«notionä¸­çé¡µé¢æè¿°è¦ç
+        process.env.NEXT_PUBLIC_DESCRIPTION || 'ericbrooks.io', // ç«ç¹æè¿°ï¼è¢«notionä¸­çé¡µé¢æè¿°è¦ç
 
   // ç½ç«å¾ç
   IMG_LAZY_LOAD_PLACEHOLDER: process.env.NEXT_PUBLIC_IMG_LAZY_LOAD_PLACEHOLDER || 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', // æå è½½å ä½å¾çå°åï¼æ¯æbase64æurl
