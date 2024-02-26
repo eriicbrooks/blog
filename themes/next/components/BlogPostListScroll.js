@@ -7,7 +7,7 @@ import CONFIG from '../config'
 import { siteConfig } from '@/lib/config'
 
 /**
- * 博客列表滚动分页
+ * Blog list scrolling pagin
  * @param posts 所有文章
  * @param tags 所有标签
  * @returns {JSX.Element}
@@ -29,7 +29,7 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = siteConfi
     updatePage(page + 1)
   }
 
-  // 监听滚动自动分页加载
+  // Monitor scrolling and automatic paging loading
   const scrollTrigger = useCallback(throttle(() => {
     const scrollS = window.scrollY + window.outerHeight
     const clientHeight = targetRef ? (targetRef.current ? (targetRef.current.clientHeight) : 0) : 0
@@ -38,7 +38,7 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = siteConfi
     }
   }, 500))
 
-  // 监听滚动
+  // Listen for scrolling
   useEffect(() => {
     window.addEventListener('scroll', scrollTrigger)
     return () => {
@@ -54,7 +54,7 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = siteConfi
   } else {
     return <div ref={targetRef}>
 
-      {/* 文章列表 */}
+      {/* Article List */}
       <div id='posts-wrapper' className='flex flex-wrap space-y-1 lg:space-y-4'>
         {postsToShow.map(post => (
           <BlogPostCard key={post.id} post={post} showSummary={showSummary} />
@@ -66,17 +66,17 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = siteConfi
           handleGetMore()
         }}
           className='w-full my-4 py-4 text-center cursor-pointer glassmorphism shadow hover:shadow-xl duration-200 dark:text-gray-200'
-        > {hasMore ? locale.COMMON.MORE : `${locale.COMMON.NO_MORE} 😰`} </div>
+        > {hasMore ? locale.COMMON.MORE : `${locale.COMMON.NO_MORE} `} </div>
       </div>
     </div>
   }
 }
 
 /**
- * 获取从第1页到指定页码的文章
- * @param page 第几页
- * @param totalPosts 所有文章
- * @param postsPerPage 每页文章数量
+ * Get articles from page 1 to the specified page number
+ * @param page Which page
+ * @param totalPosts All Articles
+ * @param postsPerPage Number of articles per page
  * @returns {*}
  */
 const getPostByPage = function (page, totalPosts, postsPerPage) {
