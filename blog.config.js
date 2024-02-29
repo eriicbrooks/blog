@@ -4,7 +4,7 @@ const BLOG = {
   PSEUDO_STATIC: process.env.NEXT_PUBLIC_PSEUDO_STATIC || false, // ä¼ªéæè·¯å¾ï¼å¼å¯åæææç« URLé½ä»¥ .html ç»å°¾ã
   NEXT_REVALIDATE_SECOND: process.env.NEXT_PUBLIC_REVALIDATE_SECOND || 5, // æ´æ°åå®¹ç¼å­é´é åä½(ç§)ï¼å³æ¯ä¸ªé¡µé¢æ5ç§ççº¯éææãæ­¤æé´æ è®ºå¤å°æ¬¡è®¿é®é½ä¸ä¼æånotionæ°æ®ï¼è°å¤§è¯¥å¼æå©äºèçVercelèµæºãåæ¶æåè®¿é®éçï¼ä½ä¹ä¼ä½¿æç« æ´æ°æå»¶è¿ã
   THEME: process.env.NEXT_PUBLIC_THEME || 'next', // example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
-  THEME_SWITCH: process.env.NEXT_PUBLIC_THEME_SWITCH || true, // true or false
+  THEME_SWITCH: process.env.NEXT_PUBLIC_THEME_SWITCH || false, // true or false
   LANG: process.env.NEXT_PUBLIC_LANG || 'en-US', // e.g 'zh-CN','en-US'  see /lib/lang.js for more.
   SINCE: process.env.NEXT_SINCE || 2023, // e.g if leave this empty, current year will be used.
   APPEARANCE: process.env.NEXT_PUBLIC_APPEARANCE || 'auto', // ['light', 'dark', 'auto'], // light æ¥é´æ¨¡å¼ ï¼ darkå¤é´æ¨¡å¼ï¼ autoæ ¹æ®æ¶é´åä¸»é¢èªå¨å¤é´æ¨¡å¼
@@ -97,7 +97,7 @@ const BLOG = {
   CUSTOM_EXTERNAL_CSS: [''], // e.g. ['http://xx.com/style.css','http://xx.com/style.css']
 
   // ä¾§æ å¸å± æ¯å¦åè½¬(å·¦åå³,å³åå·¦) å·²æ¯æä¸»é¢: hexo next medium fukasawa example
-  LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || true,
+  LAYOUT_SIDEBAR_REVERSE: process.env.NEXT_PUBLIC_LAYOUT_SIDEBAR_REVERSE || false,
 
   // ä¸ä¸ªå°æä»¶å±ç¤ºä½ çfacebook fan page~ @see https://tw.andys.pro/article/add-facebook-fanpage-notionnext
   FACEBOOK_PAGE_TITLE: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_TITLE || null, // éæ¬ Facebook Page widget çæ¨é¡æ¬ï¼å¡«''åç¡æ¨é¡æ¬ e.g FACEBOOK ç²çµ²å'
@@ -144,7 +144,7 @@ const BLOG = {
   // æ¯æ´é¡ä¼¼ WP å¯èªè¨æç« é£çµæ ¼å¼çåè½ï¼https://wordpress.org/documentation/article/customize-permalinks/ï¼ç®ååªåå¯¦ä½ %year%/%month%/%day%
   // ä¾ï¼å¦æ³é£çµæ¹æåç¶´ article + æéæ³è¨ï¼å¯è®æ´çºï¼ 'article/%year%/%month%/%day%'
 
-  POST_LIST_STYLE: process.env.NEXT_PUBLIC_POST_LIST_STYLE || 'scroll', // ['page','scroll] æç« åè¡¨æ ·å¼:é¡µç åé¡µãåé¡µæ»å¨å è½½
+  POST_LIST_STYLE: process.env.NEXT_PUBLIC_POST_LIST_STYLE || 'page', // ['page','scroll] æç« åè¡¨æ ·å¼:é¡µç åé¡µãåé¡µæ»å¨å è½½
   POST_LIST_PREVIEW: process.env.NEXT_PUBLIC_POST_PREVIEW || 'false', //  æ¯å¦å¨åè¡¨å è½½æç« é¢è§
   POST_PREVIEW_LINES: 3, // é¢è§åå®¢è¡æ°
   POST_RECOMMEND_COUNT: 3, // æ¨èæç« æ°é
@@ -157,15 +157,15 @@ const BLOG = {
   ALGOLIA_INDEX: process.env.NEXT_PUBLIC_ALGOLIA_INDEX || null, // å¨Algoliaä¸­åå»ºä¸ä¸ªindexç¨ä½æ°æ®åº
   //   ALGOLIA_RECREATE_DATA: process.env.ALGOLIA_RECREATE_DATA || process.env.npm_lifecycle_event === 'build', // ä¸ºtrueæ¶éæ°æå»ºç´¢å¼æ°æ®; é»è®¤å¨buildæ¶ä¼æå»º
 
-  PREVIEW_CATEGORY_COUNT: 5, // é¦é¡µæå¤å±ç¤ºçåç±»æ°éï¼0ä¸ºä¸éå¶
-  PREVIEW_TAG_COUNT: 5, // é¦é¡µæå¤å±ç¤ºçæ ç­¾æ°éï¼0ä¸ºä¸éå¶
+  PREVIEW_CATEGORY_COUNT: 5,
+  PREVIEW_TAG_COUNT: 5,
 
-  POST_DISABLE_GALLERY_CLICK: process.env.NEXT_PUBLIC_POST_DISABLE_GALLERY_CLICK || false, // ç»åè§å¾ç¦æ­¢ç¹å»ï¼æ¹ä¾¿å¨åé¾é¡µé¢çç»åæå¥é¾æ¥
+  POST_DISABLE_GALLERY_CLICK: process.env.NEXT_PUBLIC_POST_DISABLE_GALLERY_CLICK || false,
 
   //   ********å¨æç¹æç¸å³********
   // é¼ æ ç¹å»çè±ç¹æ
-  FIREWORKS: process.env.NEXT_PUBLIC_FIREWORKS || false, // å¼å³
-  // çè±è²å½©ï¼æè°¢ https://github.com/Vixcity æäº¤çè²å½©
+  FIREWORKS: process.env.NEXT_PUBLIC_FIREWORKS || false,
+  
   FIREWORKS_COLOR: [
     '255, 20, 97',
     '24, 255, 146',
@@ -173,21 +173,13 @@ const BLOG = {
     '251, 243, 140'
   ],
 
-  // æ¨±è±é£è½ç¹æ
-  SAKURA: process.env.NEXT_PUBLIC_SAKURA || false, // å¼å³
-  // æ¼æµ®çº¿æ®µç¹æ
-  NEST: process.env.NEXT_PUBLIC_NEST || false, // å¼å³
-  // å¨æå½©å¸¦ç¹æ
-  FLUTTERINGRIBBON: process.env.NEXT_PUBLIC_FLUTTERINGRIBBON || false, // å¼å³
-  // éæå½©å¸¦ç¹æ
-  RIBBON: process.env.NEXT_PUBLIC_RIBBON || false, // å¼å³
-  // æç©ºé¨ç¹æ é»å¤æ¨¡å¼æä¼çæ
-  STARRY_SKY: process.env.NEXT_PUBLIC_STARRY_SKY || false, // å¼å³
+  SAKURA: process.env.NEXT_PUBLIC_SAKURA || false,
+  NEST: process.env.NEXT_PUBLIC_NEST || false,
+  FLUTTERINGRIBBON: process.env.NEXT_PUBLIC_FLUTTERINGRIBBON || false,
+  RIBBON: process.env.NEXT_PUBLIC_RIBBON || false,
+  STARRY_SKY: process.env.NEXT_PUBLIC_STARRY_SKY || false,
 
-  //   ********æä»¶ç»ä»¶ç¸å³********
-  // Chatbase æ¯å¦æ¾ç¤ºchatbaseæºå¨äºº https://www.chatbase.co/
   CHATBASE_ID: process.env.NEXT_PUBLIC_CHATBASE_ID || null,
-  // WebwhizAI æºå¨äºº @see https://github.com/webwhiz-ai/webwhiz
   WEB_WHIZ_ENABLED: process.env.NEXT_PUBLIC_WEB_WHIZ_ENABLED || false, // æ¯å¦æ¾ç¤º
   WEB_WHIZ_BASE_URL: process.env.NEXT_PUBLIC_WEB_WHIZ_BASE_URL || 'https://api.webwhiz.ai', // å¯ä»¥èªå»ºæå¡å¨
   WEB_WHIZ_CHAT_BOT_ID: process.env.NEXT_PUBLIC_WEB_WHIZ_CHAT_BOT_ID || null, // å¨åå°è·åID
