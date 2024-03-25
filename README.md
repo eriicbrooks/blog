@@ -16,8 +16,6 @@
 </p>
 
 
-[中文文档](./README.md) | README in English
-
 <hr/>
 
 A static blog system built with NextJS and Notion API, deployed on Vercel. Designed for Notion and all creators.
