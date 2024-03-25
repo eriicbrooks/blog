@@ -46,6 +46,7 @@ const BLOG = {
   // å­ä½CSS ä¾å¦ https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css
   FONT_URL: [
     // 'https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css',
+    'https://fonts.googleapis.com/css?family=Archivo&display=swap',
     'https://fonts.googleapis.com/css?family=Inter&display=swap',
     'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap',
     'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&display=swap',
@@ -54,6 +55,7 @@ const BLOG = {
   // æ è¡¬çº¿å­ä½ ä¾å¦'"LXGW WenKai"'
   FONT_SANS: [
     // '"LXGW WenKai"',
+    'Archivo',
     'Inter',
     'Helvetica',
     '"PingFang SC"',
